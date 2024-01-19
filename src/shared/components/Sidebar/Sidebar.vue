@@ -5,31 +5,7 @@
       :company-logo-url="compnayLogoUrl"
     />
 
-    <SidebarMenuList
-      title="Admin"
-    >
-      <SidebarMenuItem
-        v-for="item in admin"
-        :key="item.name"
-        :icon="item.icon"
-        :variant="item.current ? 'active' : 'inactive'"
-      >
-        {{ item.name }}
-      </SidebarMenuItem>
-    </SidebarMenuList>
-
-    <SidebarMenuList
-      title="School"
-    >
-      <SidebarMenuItem
-        v-for="item in navigation"
-        :key="item.name"
-        :icon="item.icon"
-        :variant="item.current ? 'active' : 'inactive'"
-      >
-        {{ item.name }}
-      </SidebarMenuItem>
-    </SidebarMenuList>
+    <slot />
 
     <SidebarFooter>
       <SidebarProfileMenuItem
@@ -43,12 +19,8 @@
 
 <script setup lang="ts">
 import SidebarProfileMenuItem from './SidebarProfileMenuItem.vue'
-import SidebarMenuItem from './SidebarMenuItem.vue';
-import SidebarMenuList from './SidebarMenuList.vue';
 import SidebarCompanyBrand from './SidebarCompanyBrand.vue'
 import SidebarFooter from './SidebarFooter.vue'
-import { AcademicCapIcon, UserGroupIcon, KeyIcon, UsersIcon, PencilSquareIcon, Cog6ToothIcon } from '@heroicons/vue/24/outline'
-
 
 /* -------------------------------------------------------------------------- */
 /*                                  Interface                                 */
@@ -60,18 +32,6 @@ defineProps<{
   profileName: string,
   profileImageUrl: string
 }>()
-
-const admin = [
-  { name: 'Roles', href: '#', icon: KeyIcon, current: false },
-  { name: 'Users', href: '#', icon: UsersIcon, current: false },
-  { name: 'Settings', href: '#', icon: Cog6ToothIcon, current: false },
-]
-const navigation = [
-  { name: 'Courses', href: '#', icon: AcademicCapIcon, current: true },
-  { name: 'Classes', href: '#', icon: UserGroupIcon, current: false },
-  { name: 'Students', href: '#', icon: UsersIcon, current: false },
-  { name: 'Homework', href: '#', icon: PencilSquareIcon, current: false },
-]
 </script>
 
 

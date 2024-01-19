@@ -9,7 +9,7 @@
       :class="['SidebarMenuItemIcon', variant]"
       aria-hidden="true"
     />
-    <slot />
+    {{ title }}
   </a>
 </template>
 
@@ -18,6 +18,7 @@
 import type { FunctionalComponent } from 'vue'
 
 interface Props {
+  title: string,
   variant?: "inactive" | "active" | undefined
   icon?: FunctionalComponent
 }
@@ -54,7 +55,6 @@ withDefaults(defineProps<Props>(), {
     background-color: #F9FAFB;
   }
 }
-
 
 .SidebarMenuItemIcon {
   width: 1.5rem;

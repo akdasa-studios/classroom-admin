@@ -1,1 +1,2 @@
-export { default as Sidebar } from './Sidebar/Sidebar.vue'
+export * from './Sidebar'
+export * from './ActionBoard'

@@ -12,8 +12,11 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@fluent/bundle": "^0.18.0",
     "@headlessui/vue": "^1.7.17",
     "@heroicons/vue": "^2.1.1",
+    "fluent-vue": "^3.5.0",
+    "unplugin-fluent-vue": "^1.1.4",
     "vue": "^3.3.11",
     "vue-router": "^4.2.5"
   },
