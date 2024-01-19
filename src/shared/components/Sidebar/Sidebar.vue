@@ -1,8 +1,8 @@
 <template>
   <div class="Sidebar">
     <SidebarCompanyBrand
-      company-name="Best School"
-      company-logo-url="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+      :company-name="companyName"
+      :company-logo-url="compnayLogoUrl"
     />
 
     <SidebarMenuList
@@ -33,8 +33,8 @@
 
     <SidebarFooter>
       <SidebarProfileMenuItem
-        profile-name="Test User"
-        profile-image-url="https://avatar.iran.liara.run/public/2"
+        :profile-name="profileName"
+        :profile-image-url="profileImageUrl"
       />
     </SidebarFooter>
   </div>
@@ -49,6 +49,18 @@ import SidebarCompanyBrand from './SidebarCompanyBrand.vue'
 import SidebarFooter from './SidebarFooter.vue'
 import { AcademicCapIcon, UserGroupIcon, KeyIcon, UsersIcon, PencilSquareIcon, Cog6ToothIcon } from '@heroicons/vue/24/outline'
 
+
+/* -------------------------------------------------------------------------- */
+/*                                  Interface                                 */
+/* -------------------------------------------------------------------------- */
+
+defineProps<{
+  companyName: string,
+  compnayLogoUrl: string,
+  profileName: string,
+  profileImageUrl: string
+}>()
+
 const admin = [
   { name: 'Roles', href: '#', icon: KeyIcon, current: false },
   { name: 'Users', href: '#', icon: UsersIcon, current: false },
@@ -59,11 +71,6 @@ const navigation = [
   { name: 'Classes', href: '#', icon: UserGroupIcon, current: false },
   { name: 'Students', href: '#', icon: UsersIcon, current: false },
   { name: 'Homework', href: '#', icon: PencilSquareIcon, current: false },
-]
-const teams = [
-  { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
-  { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
-  { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
 ]
 </script>
 
