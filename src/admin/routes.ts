@@ -4,6 +4,6 @@ export const routes: Array<RouteRecordRaw> = [
   {
     path: '/admin',
     name: 'admin',
-    component: () => import('./pages/AdminIndexPage.vue')
+    component: () => import('./pages/AdminIndexPage.vue'),
   }
 ]
