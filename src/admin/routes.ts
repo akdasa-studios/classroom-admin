@@ -12,6 +12,11 @@ export const routes: Array<RouteRecordRaw> = [
     component: () => import('./pages/AdminRolesPage.vue')
   },
   {
+    path: '/admin/roles/:id',
+    name: 'admin-roles-edit',
+    component: () => import('./pages/AdminRolePage.vue')
+  },
+  {
     path: '/admin/users',
     name: 'admin-users',
     component: () => import('./pages/AdminUsersPage.vue')

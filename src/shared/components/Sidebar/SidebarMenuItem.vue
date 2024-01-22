@@ -49,13 +49,13 @@ withDefaults(defineProps<Props>(), {
 
     &:hover {
       color: #4F46E5;
-      background-color: #F9FAFB;
+      background-color: #E5E7EB;
     }
   }
 
   &.active {
     color: #4F46E5;
-    background-color: #F9FAFB;
+    background-color: #E5E7EB;
   }
 }
 

@@ -48,6 +48,6 @@ defineProps<{
   border-right-width: 1px;
   border-right-style: solid;
   border-color: #E5E7EB;
-  background-color: #ffffff;
+  background-color: #F9FAFB;
 }
 </style>
