@@ -1,23 +1,26 @@
 <template>
-  <a
-    :href="'item.href'"
-    :class="['SidebarMenuItem', variant]"
-  >
-    <component
-      :is="icon"
-      v-if="icon"
-      :class="['SidebarMenuItemIcon', variant]"
-      aria-hidden="true"
-    />
-    {{ title }}
-  </a>
+  <RouterLink :to="link">
+    <span
+      :class="['SidebarMenuItem', variant]"
+    >
+      <component
+        :is="icon"
+        v-if="icon"
+        :class="['SidebarMenuItemIcon', variant]"
+        aria-hidden="true"
+      />
+      {{ title }}
+    </span>
+  </RouterLink>
 </template>
 
 
 <script setup lang="ts">
 import type { FunctionalComponent } from 'vue'
+import { RouterLink, type RouteLocationNamedRaw } from 'vue-router'
 
 interface Props {
+  link: RouteLocationNamedRaw,
   title: string,
   variant?: "inactive" | "active" | undefined
   icon?: FunctionalComponent

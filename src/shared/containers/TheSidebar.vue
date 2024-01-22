@@ -7,18 +7,21 @@
   >
     <SidebarMenuList :title="$t('admin')">
       <SidebarMenuItem
+        :link="{'name': 'admin-roles'}"
         :icon="KeyIcon"
         :title="$t('roles')"
-        variant="active"
+        :variant="getItemVariant('admin-roles')"
       />
 
       <SidebarMenuItem
+        :link="{'name': 'admin-users'}"
         :icon="UsersIcon"
         :title="$t('users')"
-        variant="inactive"
+        :variant="getItemVariant('admin-users')"
       />
 
       <SidebarMenuItem
+        :link="{'name': 'admin-users'}"
         :icon="Cog6ToothIcon"
         :title="$t('settings')"
         variant="inactive"
@@ -27,24 +30,28 @@
 
     <SidebarMenuList :title="$t('school')">
       <SidebarMenuItem
+        :link="{'name': 'admin-users'}"
         :icon="AcademicCapIcon"
         :title="$t('courses')"
         variant="inactive"
       />
 
       <SidebarMenuItem
+        :link="{'name': 'admin-users'}"
         :icon="UserGroupIcon"
         :title="$t('classes')"
         variant="inactive"
       />
 
       <SidebarMenuItem
+        :link="{'name': 'admin-users'}"
         :icon="UsersIcon"
         :title="$t('students')"
         variant="inactive"
       />
 
       <SidebarMenuItem
+        :link="{'name': 'admin-users'}"
         :icon="PencilSquareIcon"
         :title="$t('homework')"
         variant="inactive"
@@ -57,6 +64,30 @@
 <script setup lang="ts">
 import { Sidebar, SidebarMenuList, SidebarMenuItem } from '@/shared/components'
 import { AcademicCapIcon, UserGroupIcon, KeyIcon, UsersIcon, PencilSquareIcon, Cog6ToothIcon } from '@heroicons/vue/24/outline'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+
+
+/* -------------------------------------------------------------------------- */
+/*                                Dependencies                                */
+/* -------------------------------------------------------------------------- */
+
+const route = useRoute()
+
+/* -------------------------------------------------------------------------- */
+/*                                    State                                   */
+/* -------------------------------------------------------------------------- */
+
+const routeName = computed(() => route.name?.toString())
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   Helpers                                  */
+/* -------------------------------------------------------------------------- */
+
+function getItemVariant(linkName: string) : "active" | "inactive" | undefined {
+  return routeName.value === linkName ? "active" : "inactive"
+}
 </script>
 
 
