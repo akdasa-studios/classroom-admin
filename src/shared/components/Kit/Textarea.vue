@@ -21,8 +21,8 @@ const modelValue = defineModel<string>()
 <style scoped>
 .Input {
   display: flex;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   border-radius: 0.375rem;

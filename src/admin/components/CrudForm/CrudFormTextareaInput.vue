@@ -1,13 +1,19 @@
 <template>
   <div class="col-span-full mt-8">
     <label
-      for="about"
       class="block text-sm font-medium leading-6 text-gray-900"
-    >About</label>
+    >
+      {{ label }}
+    </label>
+
     <div class="mt-2">
       <Textarea />
     </div>
-    <p class="mt-3 text-sm leading-6 text-gray-600">
+
+    <p
+      v-if="notes"
+      class="mt-3 text-sm leading-6 text-gray-600"
+    >
       Write a few sentences about yourself.
     </p>
   </div>
@@ -18,6 +24,9 @@
 import { Textarea } from '@/shared/components'
 
 defineProps<{
-  label: string
+  label: string,
+  notes?: string
 }>()
 </script>
+
+

@@ -11,7 +11,7 @@
 <script setup lang="ts">
 
 interface Props {
-  variant?: "default"
+  variant?: "default" | "ghost" | "destructive"
   size?: "normal" | "small" | "large"
   as?: string
 }
@@ -50,12 +50,27 @@ withDefaults(defineProps<Props>(), {
     }
   }
 
+  &.ghost {
+    color: #6366F1;
+
+    &:hover {
+      color: #4F46E5;
+    }
+  }
+
+  &.destructive {
+    color: rgb(239 68 68);
+
+    &:hover {
+      color: rgb(220 38 38);
+    }
+  }
 
   &.normal {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   &.small {
