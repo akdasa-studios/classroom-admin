@@ -57,13 +57,29 @@
         variant="inactive"
       />
     </SidebarMenuList>
+
+    <SidebarMenuList :title="$t('finances')">
+      <SidebarMenuItem
+        :link="{'name': 'admin-users'}"
+        :icon="ChartBarIcon"
+        :title="$t('financial-reports')"
+        variant="inactive"
+      />
+
+      <SidebarMenuItem
+        :link="{'name': 'admin-users'}"
+        :icon="BanknotesIcon"
+        :title="$t('payments')"
+        variant="inactive"
+      />
+    </SidebarMenuList>
   </Sidebar>
 </template>
 
 
 <script setup lang="ts">
 import { Sidebar, SidebarMenuList, SidebarMenuItem } from '@/shared/components'
-import { AcademicCapIcon, UserGroupIcon, KeyIcon, UsersIcon, PencilSquareIcon, Cog6ToothIcon } from '@heroicons/vue/24/outline'
+import { AcademicCapIcon, UserGroupIcon, KeyIcon, UsersIcon, PencilSquareIcon, Cog6ToothIcon, BanknotesIcon, ChartBarIcon } from '@heroicons/vue/24/outline'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
@@ -101,6 +117,9 @@ courses = Courses
 classes = Classes
 students = Students
 homework = Homework
+finances = Finances
+financial-reports = Financial reports
+payments = Payments
 </fluent>
 
 <fluent locale="ru">
@@ -113,4 +132,7 @@ courses = Курсы
 classes = Классы
 students = Ученики
 homework = Домашнее задание
+finances = Финансы
+financial-reports = Финансовые отчеты
+payments = Платежи
 </fluent>
