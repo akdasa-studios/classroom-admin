@@ -3,15 +3,7 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-
-import { createFluentVue } from 'fluent-vue'
-import { FluentBundle } from '@fluent/bundle'
-
-const enBundle = new FluentBundle('ru')
-
-const fluent = createFluentVue({
-  bundles: [enBundle]
-})
+import { fluent } from './i18n'
 
 
 const app = createApp(App)

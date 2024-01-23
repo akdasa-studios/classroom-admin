@@ -3,13 +3,15 @@
     <Button
       variant="destructive"
     >
-      Delete
+      {{ $t('crud-delete') }}
     </Button>
     <div class="grow" />
     <Button variant="ghost">
-      Cancel
+      {{ $t('crud-cancel') }}
     </Button>
-    <Button>Save</Button>
+    <Button>
+      {{ $t('crud-save') }}
+    </Button>
   </div>
 </template>
 

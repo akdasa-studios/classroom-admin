@@ -5,71 +5,71 @@
     profile-name="Test User"
     profile-image-url="https://avatar.iran.liara.run/public/2"
   >
-    <SidebarMenuList :title="$t('admin')">
+    <SidebarMenuList :title="$t('sidebar-org')">
       <SidebarMenuItem
         :link="{'name': 'admin-roles'}"
         :icon="KeyIcon"
-        :title="$t('roles')"
+        :title="$t('sidebar-org-roles')"
         :variant="getItemVariant('admin-roles')"
       />
 
       <SidebarMenuItem
         :link="{'name': 'admin-users'}"
         :icon="UsersIcon"
-        :title="$t('users')"
+        :title="$t('sidebar-org-users')"
         :variant="getItemVariant('admin-users')"
       />
 
       <SidebarMenuItem
         :link="{'name': 'admin-users'}"
         :icon="Cog6ToothIcon"
-        :title="$t('settings')"
+        :title="$t('sidebar-org-settings')"
         variant="inactive"
       />
     </SidebarMenuList>
 
-    <SidebarMenuList :title="$t('school')">
+    <SidebarMenuList :title="$t('sidebar-edu')">
       <SidebarMenuItem
         :link="{'name': 'admin-users'}"
         :icon="AcademicCapIcon"
-        :title="$t('courses')"
+        :title="$t('sidebar-edu-courses')"
         variant="inactive"
       />
 
       <SidebarMenuItem
         :link="{'name': 'admin-users'}"
         :icon="UserGroupIcon"
-        :title="$t('classes')"
+        :title="$t('sidebar-edu-classes')"
         variant="inactive"
       />
 
       <SidebarMenuItem
         :link="{'name': 'admin-users'}"
         :icon="UsersIcon"
-        :title="$t('students')"
+        :title="$t('sidebar-edu-students')"
         variant="inactive"
       />
 
       <SidebarMenuItem
         :link="{'name': 'admin-users'}"
         :icon="PencilSquareIcon"
-        :title="$t('homework')"
+        :title="$t('sidebar-edu-homework')"
         variant="inactive"
       />
     </SidebarMenuList>
 
-    <SidebarMenuList :title="$t('finances')">
+    <SidebarMenuList :title="$t('sidebar-fin')">
       <SidebarMenuItem
         :link="{'name': 'admin-users'}"
         :icon="ChartBarIcon"
-        :title="$t('financial-reports')"
+        :title="$t('sidebar-fin-reports')"
         variant="inactive"
       />
 
       <SidebarMenuItem
         :link="{'name': 'admin-users'}"
         :icon="BanknotesIcon"
-        :title="$t('payments')"
+        :title="$t('sidebar-fin-payments')"
         variant="inactive"
       />
     </SidebarMenuList>
@@ -105,34 +105,3 @@ function getItemVariant(linkName: string) : "active" | "inactive" | undefined {
   return routeName.value === linkName ? "active" : "inactive"
 }
 </script>
-
-
-<fluent locale="en">
-admin = Admin
-school = School
-roles = Roles
-users = Users
-settings = Settings
-courses = Courses
-classes = Classes
-students = Students
-homework = Homework
-finances = Finances
-financial-reports = Financial reports
-payments = Payments
-</fluent>
-
-<fluent locale="ru">
-admin = Администратор
-school = Школа
-roles = Роли
-users = Пользователи
-settings = Настройки
-courses = Курсы
-classes = Классы
-students = Ученики
-homework = Домашнее задание
-finances = Финансы
-financial-reports = Финансовые отчеты
-payments = Платежи
-</fluent>
