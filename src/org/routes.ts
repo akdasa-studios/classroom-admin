@@ -14,7 +14,7 @@ export const routes: Array<RouteRecordRaw> = [
   {
     path: '/org/roles/:id',
     name: 'org-roles-edit',
-    component: () => import('./pages/RolesEditPage.vue')
+    component: () => import('./pages/RolesCrudPage.vue')
   },
   {
     path: '/org/users',

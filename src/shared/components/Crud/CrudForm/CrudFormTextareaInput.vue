@@ -7,7 +7,10 @@
     </label>
 
     <div class="mt-2">
-      <Textarea />
+      <Textarea
+        v-model="modelValue"
+        v-bind="$attrs"
+      />
     </div>
 
     <p
@@ -27,6 +30,8 @@ defineProps<{
   label: string,
   notes?: string
 }>()
+
+const modelValue = defineModel<string>("")
 </script>
 
 

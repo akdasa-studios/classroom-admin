@@ -5,7 +5,10 @@
         {{ label }}
       </label>
       <div class="mt-2">
-        <Input />
+        <Input
+          v-model="modelValue"
+          v-bind="$attrs"
+        />
       </div>
     </div>
   </div>
@@ -15,9 +18,15 @@
 <script setup lang="ts">
 import { Input } from '@/shared/components'
 
+/* -------------------------------------------------------------------------- */
+/*                                  Interface                                 */
+/* -------------------------------------------------------------------------- */
+
 defineProps<{
   label: string
 }>()
+
+const modelValue = defineModel<string>("")
 </script>
 
 

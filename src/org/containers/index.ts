@@ -1,0 +1,1 @@
+export { default as RoleCrudForm } from './RoleCrudForm.vue'

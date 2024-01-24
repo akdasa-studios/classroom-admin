@@ -7,7 +7,11 @@
     <slot />
   </div>
 
-  <CrudFormActionButtons />
+  <CrudFormActionButtons
+    @save="onSaveButtonClicked"
+    @cancel="onCancelButtonClicked"
+    @delete="onDeleteButtonClicked"
+  />
 </template>
 
 
@@ -22,6 +26,26 @@ defineProps<{
   title: string,
   description: string
 }>()
-</script>
 
-@/shared/components/Crud
+const emit = defineEmits<{
+  save: []
+  cancel: []
+  delete: []
+}>()
+
+/* -------------------------------------------------------------------------- */
+/*                                  Handlers                                  */
+/* -------------------------------------------------------------------------- */
+
+function onDeleteButtonClicked() {
+  emit('delete')
+}
+
+function onCancelButtonClicked() {
+  emit('cancel')
+}
+
+function onSaveButtonClicked() {
+  emit('save')
+}
+</script>

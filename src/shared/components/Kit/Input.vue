@@ -9,6 +9,10 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 
+/* -------------------------------------------------------------------------- */
+/*                                  Interface                                 */
+/* -------------------------------------------------------------------------- */
+
 defineProps<{
   class?: HTMLAttributes['class']
 }>()
