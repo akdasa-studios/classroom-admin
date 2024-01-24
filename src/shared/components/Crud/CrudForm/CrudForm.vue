@@ -12,7 +12,7 @@
 
 
 <script setup lang="ts">
-import { CrudFormActionButtons, CrudFormSectionHeader } from '@/admin/components'
+import { CrudFormActionButtons, CrudFormSectionHeader } from '@/shared/components'
 
 /* -------------------------------------------------------------------------- */
 /*                                  Interface                                 */
@@ -24,3 +24,4 @@ defineProps<{
 }>()
 </script>
 
+@/shared/components/Crud

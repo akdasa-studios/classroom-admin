@@ -65,3 +65,4 @@ role-description = Описание
 roles = Роли
 roles-description = Список всех ролей в вашей школе, включая их название и разрешения.
 </fluent>
+@/shared/components/Crud

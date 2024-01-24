@@ -27,7 +27,7 @@
 
 
 <script setup lang="ts">
-import { CrudForm, CrudFormSectionHeader, CrudFormTextInput, CrudFormTextareaInput, CrudFormCheckbox } from '@/admin/components'
+import { CrudForm, CrudFormSectionHeader, CrudFormTextInput, CrudFormTextareaInput, CrudFormCheckbox } from '@/shared/components'
 import { Permissions } from '@core/permissions'
 
 /* -------------------------------------------------------------------------- */
@@ -61,3 +61,4 @@ role-description = Описание
 roles = Роли
 roles-description = Список всех ролей в вашей школе, включая их название и разрешения.
 </fluent>
+@/shared/components/Crud
