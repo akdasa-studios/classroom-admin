@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 import { CrudForm, CrudFormSectionHeader, CrudFormTextInput, CrudFormTextareaInput, CrudFormCheckbox } from '@/shared/components'
-import { Permissions, PermissionGroups } from '@core/permissions'
+import { Permission, PermissionGroups } from '@core/permissions'
 import { ref, toRaw } from 'vue'
 
 
@@ -47,7 +47,7 @@ import { ref, toRaw } from 'vue'
 const props = defineProps<{
   name: string,
   description: string,
-  permissions: Permissions[]
+  permissions: Permission[]
 }>()
 
 
@@ -65,7 +65,7 @@ const permissions = ref(props.permissions)
 /* -------------------------------------------------------------------------- */
 
 function onPermissionUpdated(
-  permissionId: Permissions,
+  permissionId: Permission,
   value: boolean
 ) {
   if (value && !permissions.value.includes(permissionId)) {
@@ -89,7 +89,7 @@ function onSaveButtonClicked() {
 
 function getPermissionGroup(
   groupPrefix: string
-): Permissions[] {
-  return Object.values(Permissions).filter((x: string) => x.startsWith(groupPrefix))
+): Permission[] {
+  return Object.values(Permission).filter((x: string) => x.startsWith(groupPrefix))
 }
 </script>
