@@ -35,7 +35,7 @@
 
 
 <script setup lang="ts">
-import { CrudTableHeader } from '@/admin/components'
+import { CrudTableHeader } from '@/shared/components'
 import { Table, TableHeader, TableCell, TableRow } from '@/shared/components'
 
 const people = [

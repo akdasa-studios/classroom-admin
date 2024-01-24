@@ -1,7 +1,7 @@
 import { FluentBundle } from '@fluent/bundle'
 import { createFluentVue } from 'fluent-vue'
 
-import adminResources from './admin/i18n'
+import adminResources from './org/i18n'
 
 export const enBundle = new FluentBundle('en')
 export const ruBundle = new FluentBundle('ru')

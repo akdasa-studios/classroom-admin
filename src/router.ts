@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import { routes as adminRoutes } from './admin/routes'
+import { routes as adminRoutes } from './org/routes'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
