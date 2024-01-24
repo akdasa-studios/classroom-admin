@@ -45,20 +45,3 @@ function getPermissionGroup(groupPrefix: string): string[] {
   return Object.values(Permissions).filter((x: string) => x.startsWith(groupPrefix))
 }
 </script>
-
-
-<fluent locale="en">
-role = Role
-role-description = Description
-roles = Roles
-roles-description = A list of all the roles in your school including their name and permissions.
-</fluent>
-
-
-<fluent locale="ru">
-role = Роль
-role-description = Описание
-roles = Роли
-roles-description = Список всех ролей в вашей школе, включая их название и разрешения.
-</fluent>
-@/shared/components/Crud

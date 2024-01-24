@@ -7,21 +7,21 @@
   >
     <SidebarMenuList :title="$t('sidebar-org')">
       <SidebarMenuItem
-        :link="{'name': 'admin-roles'}"
+        :link="{'name': 'org-roles'}"
         :icon="KeyIcon"
         :title="$t('sidebar-org-roles')"
-        :variant="getItemVariant('admin-roles')"
+        :variant="getItemVariant('org-roles')"
       />
 
       <SidebarMenuItem
-        :link="{'name': 'admin-users'}"
+        :link="{'name': 'org-users'}"
         :icon="UsersIcon"
         :title="$t('sidebar-org-users')"
-        :variant="getItemVariant('admin-users')"
+        :variant="getItemVariant('org-users')"
       />
 
       <SidebarMenuItem
-        :link="{'name': 'admin-users'}"
+        :link="{'name': 'org-users'}"
         :icon="Cog6ToothIcon"
         :title="$t('sidebar-org-settings')"
         variant="inactive"
@@ -30,28 +30,28 @@
 
     <SidebarMenuList :title="$t('sidebar-edu')">
       <SidebarMenuItem
-        :link="{'name': 'admin-users'}"
+        :link="{'name': 'org-users'}"
         :icon="AcademicCapIcon"
         :title="$t('sidebar-edu-courses')"
         variant="inactive"
       />
 
       <SidebarMenuItem
-        :link="{'name': 'admin-users'}"
+        :link="{'name': 'org-users'}"
         :icon="UserGroupIcon"
         :title="$t('sidebar-edu-classes')"
         variant="inactive"
       />
 
       <SidebarMenuItem
-        :link="{'name': 'admin-users'}"
+        :link="{'name': 'org-users'}"
         :icon="UsersIcon"
         :title="$t('sidebar-edu-students')"
         variant="inactive"
       />
 
       <SidebarMenuItem
-        :link="{'name': 'admin-users'}"
+        :link="{'name': 'org-users'}"
         :icon="PencilSquareIcon"
         :title="$t('sidebar-edu-homework')"
         variant="inactive"
@@ -60,14 +60,14 @@
 
     <SidebarMenuList :title="$t('sidebar-fin')">
       <SidebarMenuItem
-        :link="{'name': 'admin-users'}"
+        :link="{'name': 'org-users'}"
         :icon="ChartBarIcon"
         :title="$t('sidebar-fin-reports')"
         variant="inactive"
       />
 
       <SidebarMenuItem
-        :link="{'name': 'admin-users'}"
+        :link="{'name': 'org-users'}"
         :icon="BanknotesIcon"
         :title="$t('sidebar-fin-payments')"
         variant="inactive"

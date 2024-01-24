@@ -2,23 +2,23 @@ import type { RouteRecordRaw } from 'vue-router'
 
 export const routes: Array<RouteRecordRaw> = [
   {
-    path: '/admin',
-    name: 'admin',
+    path: '/org',
+    name: 'org',
     component: () => import('./pages/AdminIndexPage.vue'),
   },
   {
-    path: '/admin/roles',
-    name: 'admin-roles',
+    path: '/org/roles',
+    name: 'org-roles',
     component: () => import('./pages/AdminRolesPage.vue')
   },
   {
-    path: '/admin/roles/:id',
-    name: 'admin-roles-edit',
-    component: () => import('./pages/AdminRolePage.vue')
+    path: '/org/roles/:id',
+    name: 'org-roles-edit',
+    component: () => import('./pages/RolesEditPage.vue')
   },
   {
-    path: '/admin/users',
-    name: 'admin-users',
+    path: '/org/users',
+    name: 'org-users',
     component: () => import('./pages/AdminUsersPage.vue')
   }
 ]
