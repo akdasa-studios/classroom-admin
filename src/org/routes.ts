@@ -1,3 +1,5 @@
+import { UuidIdentity } from '@akd-studios/framework/domain'
+import type { RoleIdentity } from '@core/aggregates'
 import type { RouteRecordRaw } from 'vue-router'
 
 export const routes: Array<RouteRecordRaw> = [
@@ -14,7 +16,10 @@ export const routes: Array<RouteRecordRaw> = [
   {
     path: '/org/roles/:id',
     name: 'org-roles-edit',
-    component: () => import('./pages/RolesCrudPage.vue')
+    component: () => import('./pages/RolesCrudPage.vue'),
+    props: route => ({
+      roleId: new UuidIdentity(route.params.id as string) as RoleIdentity,
+    }),
   },
   {
     path: '/org/users',

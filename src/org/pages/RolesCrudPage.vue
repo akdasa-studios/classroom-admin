@@ -1,21 +1,65 @@
 <template>
   <RoleCrudForm
-    :name="name"
-    :description="''"
-    :permissions="[]"
+    v-if="role"
+    :name="role.name"
+    :description="role.description"
+    :permissions="role.permissions"
   />
 </template>
 
 
 <script setup lang="ts">
 import { RoleCrudForm } from '@/org/containers'
-import { ref } from 'vue'
+import { useRolesService } from '@/org/composables'
+import { useRouter } from 'vue-router';
+import { onMounted, shallowRef } from 'vue';
+import type { Role, RoleIdentity } from '@core/aggregates';
 
-const name = ref("123")
+/* -------------------------------------------------------------------------- */
+/*                                  Interface                                 */
+/* -------------------------------------------------------------------------- */
 
-// const role = ref({
-//   name: "test",
-//   description: "Description",
-//   permissions: []
-// })
+const props = defineProps<{
+  roleId: RoleIdentity
+}>()
+
+
+/* -------------------------------------------------------------------------- */
+/*                                Dependencies                                */
+/* -------------------------------------------------------------------------- */
+
+const rolesService = useRolesService()
+const router = useRouter()
+
+
+/* -------------------------------------------------------------------------- */
+/*                                    State                                   */
+/* -------------------------------------------------------------------------- */
+
+const role = shallowRef<Role|undefined>(undefined)
+
+
+/* -------------------------------------------------------------------------- */
+/*                                    Hooks                                   */
+/* -------------------------------------------------------------------------- */
+
+onMounted(onEnter)
+
+
+/* -------------------------------------------------------------------------- */
+/*                                  Handlers                                  */
+/* -------------------------------------------------------------------------- */
+
+async function onEnter() {
+  await fetchData()
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   Helpers                                  */
+/* -------------------------------------------------------------------------- */
+
+async function fetchData() {
+  role.value = await rolesService.getRole(props.roleId)
+}
 </script>
