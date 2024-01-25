@@ -9,7 +9,7 @@ export const routes: Array<RouteRecordRaw> = [
   {
     path: '/org/roles',
     name: 'org-roles',
-    component: () => import('./pages/AdminRolesPage.vue')
+    component: () => import('./pages/RolesListPage.vue')
   },
   {
     path: '/org/roles/:id',
