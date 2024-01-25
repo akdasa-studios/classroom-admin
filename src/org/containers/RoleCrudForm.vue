@@ -1,16 +1,16 @@
 <template>
   <CrudForm
     :title="$t('org-roles-crud')"
-    :description="$ta('org-roles-crud').description"
+    :description="$ta('org-roles-crud').header"
     @save="onSaveButtonClicked"
   >
     <CrudFormTextInput
       v-model="name"
-      :label="$t('org-roles-name')"
+      :label="$ta('org-roles-crud').name"
     />
     <CrudFormTextareaInput
       v-model="description"
-      :label="$t('org-roles-description')"
+      :label="$ta('org-roles-crud').description"
     />
 
     <template
@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 import { CrudForm, CrudFormSectionHeader, CrudFormTextInput, CrudFormTextareaInput, CrudFormCheckbox } from '@/shared/components'
-import { Permission, PermissionGroups } from '@core/permissions'
+import { Permission, PermissionGroups } from '@core/aggregates'
 import { ref, toRaw } from 'vue'
 
 
