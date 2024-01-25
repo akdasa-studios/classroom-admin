@@ -10,7 +10,7 @@
     </div>
 
     <Button>
-      Add role
+      {{ createButtonTitle }}
     </Button>
   </div>
 </template>
@@ -22,7 +22,7 @@ import { Button } from '@/shared/components'
 defineProps<{
   title: string,
   description: string,
-
+  createButtonTitle: string
 }>()
 </script>
 
