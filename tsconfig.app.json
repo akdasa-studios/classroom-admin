@@ -1,6 +1,12 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "submodules/core/**/*.ts"],
+  "include": [
+    "env.d.ts",
+    "src/**/*",
+    "src/**/*.vue",
+    "submodules/core/**/*.ts",
+    "submodules/framework/lib/**/*.ts",
+  ],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
@@ -8,7 +14,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@core/*": ["./submodules/core/*"]
+      "@core/*": ["./submodules/core/*"],
+      "@akd-studios/framework/*": ["./submodules/framework/lib/*"]
     }
   }
 }

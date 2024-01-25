@@ -16,7 +16,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
-      '@core': fileURLToPath(new URL('./submodules/core', import.meta.url))
+      '@core': fileURLToPath(new URL('./submodules/core', import.meta.url)),
+      '@akd-studios/framework': fileURLToPath(new URL('./submodules/framework/lib', import.meta.url))
     }
   }
 })
