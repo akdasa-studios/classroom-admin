@@ -1,3 +1,6 @@
 [submodule "core"]
 	path = submodules/core
 	url = https://github.com/akdasa-studios/classroom-core.git
+[submodule "framework"]
+	path = submodules/framework
+	url = https://github.com/akdasa-studios/framework.git
