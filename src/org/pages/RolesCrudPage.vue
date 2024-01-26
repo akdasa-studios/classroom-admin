@@ -20,7 +20,7 @@ import { useRouter } from 'vue-router'
 /* -------------------------------------------------------------------------- */
 
 const props = defineProps<{
-  roleId: RoleIdentity
+  roleId: RoleIdentity | undefined
 }>()
 
 
@@ -70,6 +70,8 @@ async function onSave(data: RoleEditableFields) {
 /* -------------------------------------------------------------------------- */
 
 async function fetchData() {
-  role.value = await rolesService.getRole(props.roleId) || new Role(new UuidIdentity(), '', '', [])
+  role.value = props.roleId
+    ? await rolesService.getRole(props.roleId)
+    :  new Role(new UuidIdentity(), '', '', [])
 }
 </script>
