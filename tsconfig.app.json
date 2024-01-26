@@ -9,13 +9,15 @@
   ],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
+    "lib": ["ES2022"],
+    "target": "ES2022",
     "composite": true,
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@core/*": ["./submodules/core/*"],
-      "@akd-studios/framework/*": ["./submodules/framework/lib/*"]
+      "@akd-studios/framework/*": ["./submodules/framework/lib/*"],
+      "@classroom/core/*":        ["./submodules/core/*"],
+      "@classroom/*":             ["./src/*"],
     }
   }
 }

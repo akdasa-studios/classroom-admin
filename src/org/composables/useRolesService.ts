@@ -1,4 +1,4 @@
-import { RolesService } from "@/org/services"
+import { RolesService } from '@classroom/org/services'
 
 const ROLES_SERVICE = new RolesService()
 

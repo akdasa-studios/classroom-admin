@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { Button } from '@/shared/components'
+import { Button } from '@classroom/shared/components'
 
 /* -------------------------------------------------------------------------- */
 /*                                  Interface                                 */

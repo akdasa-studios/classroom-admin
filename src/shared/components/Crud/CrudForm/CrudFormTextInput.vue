@@ -16,7 +16,7 @@
 
 
 <script setup lang="ts">
-import { Input } from '@/shared/components'
+import { Input } from '@classroom/shared/components'
 
 /* -------------------------------------------------------------------------- */
 /*                                  Interface                                 */
@@ -26,7 +26,7 @@ defineProps<{
   label: string
 }>()
 
-const modelValue = defineModel<string>("")
+const modelValue = defineModel<string>('')
 </script>
 
 

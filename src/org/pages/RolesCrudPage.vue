@@ -8,12 +8,12 @@
 
 
 <script setup lang="ts">
-import { RoleCrudForm, type RoleEditableFields } from '@/org/containers'
-import { useRolesService } from '@/org/composables'
-import { useRouter } from 'vue-router';
-import { onMounted, shallowRef } from 'vue';
-import { Role, type RoleIdentity } from '@core/aggregates';
-import { UuidIdentity } from '@akd-studios/framework/domain';
+import { RoleCrudForm, type RoleEditableFields } from '@classroom/org/containers'
+import { useRolesService } from '@classroom/org/composables'
+import { useRouter } from 'vue-router'
+import { onMounted, shallowRef } from 'vue'
+import { Role, type RoleIdentity } from '@classroom/core/aggregates'
+import { UuidIdentity } from '@akd-studios/framework/domain'
 
 /* -------------------------------------------------------------------------- */
 /*                                  Interface                                 */
@@ -70,6 +70,6 @@ async function onSave(data: RoleEditableFields) {
 /* -------------------------------------------------------------------------- */
 
 async function fetchData() {
-  role.value = await rolesService.getRole(props.roleId) || new Role(new UuidIdentity(), "", "", [])
+  role.value = await rolesService.getRole(props.roleId) || new Role(new UuidIdentity(), '', '', [])
 }
 </script>

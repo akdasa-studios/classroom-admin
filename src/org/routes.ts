@@ -1,5 +1,5 @@
 import { UuidIdentity } from '@akd-studios/framework/domain'
-import type { RoleIdentity } from '@core/aggregates'
+import type { RoleIdentity } from '@classroom/core/aggregates'
 import type { RouteRecordRaw } from 'vue-router'
 
 export const routes: Array<RouteRecordRaw> = [

@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 interface Props {
-  variant?: "normal" | "first" | undefined
+  variant?: 'normal' | 'first' | undefined
 }
 
 withDefaults(defineProps<Props>(), {

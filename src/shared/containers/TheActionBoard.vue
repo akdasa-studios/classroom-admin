@@ -56,7 +56,7 @@
 
 
 <script setup lang="ts">
-import { ActionBoardHeader, ActionBoardItem, ActionBoardList} from '@/shared/components';
+import { ActionBoardHeader, ActionBoardItem, ActionBoardList} from '@classroom/shared/components'
 import { KeyIcon, AcademicCapIcon, UserGroupIcon, UsersIcon, PencilSquareIcon } from '@heroicons/vue/24/outline'
 </script>
 

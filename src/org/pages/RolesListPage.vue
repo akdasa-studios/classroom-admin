@@ -36,11 +36,11 @@
 
 
 <script setup lang="ts">
-import { CrudTableHeader } from '@/shared/components'
-import { Table, TableHeader, TableCell, TableRow } from '@/shared/components'
-import { useRolesService } from '@/org/composables'
+import { CrudTableHeader } from '@classroom/shared/components'
+import { Table, TableHeader, TableCell, TableRow } from '@classroom/shared/components'
+import { useRolesService } from '@classroom/org/composables'
 import { onMounted, shallowRef } from 'vue'
-import type { Role, RoleIdentity } from '@core/aggregates'
+import type { Role, RoleIdentity } from '@classroom/core/aggregates'
 import { useRouter } from 'vue-router'
 import { UuidIdentity } from '@akd-studios/framework/domain'
 

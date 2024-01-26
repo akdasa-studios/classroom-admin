@@ -22,7 +22,7 @@ import { RouterLink, type RouteLocationNamedRaw } from 'vue-router'
 interface Props {
   link: RouteLocationNamedRaw,
   title: string,
-  variant?: "inactive" | "active" | undefined
+  variant?: 'inactive' | 'active' | undefined
   icon?: FunctionalComponent
 }
 

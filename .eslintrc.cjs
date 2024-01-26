@@ -12,6 +12,17 @@ module.exports = {
     'plugin:vue/vue3-recommended',
   ],
   parserOptions: {
-    ecmaVersion: 'latest'
-  }
+    ecmaVersion: 'latest',
+  },
+  settings: {
+    'import/resolver': {
+      'typescript': true,
+      'node': true,
+    }
+  },
+  rules: {
+    'semi': ['error', 'never'],
+    'quotes': ['error', 'single'],
+  },
+  ignorePatterns: ['dist/**'],
 }

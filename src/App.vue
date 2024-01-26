@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import { TheSidebar } from '@/shared/containers'
-import { SidebarAndMainBlockLayout } from '@/shared/layouts'
+import { TheSidebar } from '@classroom/shared/containers'
+import { SidebarAndMainBlockLayout } from '@classroom/shared/layouts'
 </script>
 

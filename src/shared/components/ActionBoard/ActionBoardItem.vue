@@ -27,7 +27,7 @@
 
 
 <script setup lang="ts">
-import type { FunctionalComponent } from 'vue';
+import type { FunctionalComponent } from 'vue'
 
 defineProps<{
   title: string,

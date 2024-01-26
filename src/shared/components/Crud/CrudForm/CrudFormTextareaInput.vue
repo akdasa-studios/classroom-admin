@@ -24,14 +24,14 @@
 
 
 <script setup lang="ts">
-import { Textarea } from '@/shared/components'
+import { Textarea } from '@classroom/shared/components'
 
 defineProps<{
   label: string,
   notes?: string
 }>()
 
-const modelValue = defineModel<string>("")
+const modelValue = defineModel<string>('')
 </script>
 
 

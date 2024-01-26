@@ -79,34 +79,4 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import {
-  AcademicCapIcon,
-  UserGroupIcon,
-  KeyIcon,
-  UsersIcon,
-  PencilSquareIcon,
-  Cog6ToothIcon
-} from '@heroicons/vue/24/outline'
-import { Sidebar } from '@/shared/components'
-import { SidebarAndMainBlockLayout } from '@/shared/layouts'
-
-const admin = [
-  { name: 'Roles', href: '#', icon: KeyIcon, current: false },
-  { name: 'Users', href: '#', icon: UsersIcon, current: false },
-  { name: 'Settings', href: '#', icon: Cog6ToothIcon, current: false },
-]
-const navigation = [
-  { name: 'Courses', href: '#', icon: AcademicCapIcon, current: true },
-  { name: 'Classes', href: '#', icon: UserGroupIcon, current: false },
-  { name: 'Students', href: '#', icon: UsersIcon, current: false },
-  { name: 'Homework', href: '#', icon: PencilSquareIcon, current: false },
-]
-const teams = [
-  { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
-  { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
-  { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
-]
-
-const sidebarOpen = ref(false)
 </script>

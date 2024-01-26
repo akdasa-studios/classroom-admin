@@ -1,4 +1,4 @@
-import { Role, type RoleIdentity } from "@core/aggregates"
+import { Role, type RoleIdentity } from "@classroom/core/aggregates"
 
 
 export class RolesService {

@@ -3,5 +3,5 @@
 </template>
 
 <script setup lang="ts">
-import { TheActionBoard } from '@/shared/containers';
+import { TheActionBoard } from '@classroom/shared/containers'
 </script>

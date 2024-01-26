@@ -36,15 +36,15 @@
 
 
 <script setup lang="ts">
-import { CrudForm, CrudFormSectionHeader, CrudFormTextInput, CrudFormTextareaInput, CrudFormCheckbox } from '@/shared/components'
-import { Permission, PermissionGroups, Role } from '@core/aggregates'
+import { CrudForm, CrudFormSectionHeader, CrudFormTextInput, CrudFormTextareaInput, CrudFormCheckbox } from '@classroom/shared/components'
+import { Permission, PermissionGroups, Role } from '@classroom/core/aggregates'
 import { ref, toRaw } from 'vue'
 
 /* -------------------------------------------------------------------------- */
 /*                                  Interface                                 */
 /* -------------------------------------------------------------------------- */
 
-export type RoleEditableFields = Pick<Role, "name" | "description" | "permissions">
+export type RoleEditableFields = Pick<Role, 'name' | 'description' | 'permissions'>
 
 const props = defineProps<{
   role: Role
@@ -80,7 +80,7 @@ function onPermissionUpdated(
 }
 
 function onSaveButtonClicked() {
-  emit("save", {
+  emit('save', {
     name: name.value,
     description: description.value,
     permissions: toRaw(permissions.value)

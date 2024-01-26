@@ -11,8 +11,8 @@
 <script setup lang="ts">
 
 interface Props {
-  variant?: "default" | "ghost" | "destructive"
-  size?: "normal" | "small" | "large"
+  variant?: 'default' | 'ghost' | 'destructive'
+  size?: 'normal' | 'small' | 'large'
   as?: string
 }
 
