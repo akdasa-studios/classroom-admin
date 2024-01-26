@@ -6,15 +6,17 @@
     "src/**/*.vue",
     "submodules/core/**/*.ts",
     "submodules/framework/lib/**/*.ts",
+    "submodules/framework-persistence-rest/lib/**/*.ts",
   ],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
-    "lib": ["ES2022"],
+    "lib": ["ES2022", "DOM"],
     "target": "ES2022",
     "composite": true,
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
+      "@akd-studios/framework-persistence-rest/*": ["./submodules/framework-persistence-rest/lib/*"],
       "@akd-studios/framework/*": ["./submodules/framework/lib/*"],
       "@classroom/core/*":        ["./submodules/core/lib/*"],
       "@classroom/*":             ["./src/*"],
