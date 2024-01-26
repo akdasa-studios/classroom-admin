@@ -9,7 +9,7 @@
       </p>
     </div>
 
-    <Button>
+    <Button @click="emit('createButtonClick')">
       {{ createButtonTitle }}
     </Button>
   </div>
@@ -23,6 +23,10 @@ defineProps<{
   title: string,
   description: string,
   createButtonTitle: string
+}>()
+
+const emit = defineEmits<{
+  createButtonClick: []
 }>()
 </script>
 

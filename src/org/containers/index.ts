@@ -1,1 +1,1 @@
-export { default as RoleCrudForm } from './RoleCrudForm.vue'
+export { default as RoleCrudForm, type RoleEditableFields } from './RoleCrudForm.vue'

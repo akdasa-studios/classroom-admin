@@ -23,11 +23,12 @@
       />
 
       <CrudFormCheckbox
-        v-for="permissionId in getPermissionGroup(group)"
-        :key="permissionId"
-        :title="$t(`permission-${permissionId}`)"
-        :description="$ta(`permission-${permissionId}`).description"
-        @update:model-value="(v) => onPermissionUpdated(permissionId, v)"
+        v-for="permission in getPermissionGroup(group)"
+        :key="permission"
+        :title="$t(`permission-${permission}`)"
+        :description="$ta(`permission-${permission}`).description"
+        :model-value="permissions.includes(permission)"
+        @update:model-value="(v) => onPermissionUpdated(permission, v)"
       />
     </template>
   </CrudForm>
@@ -36,18 +37,21 @@
 
 <script setup lang="ts">
 import { CrudForm, CrudFormSectionHeader, CrudFormTextInput, CrudFormTextareaInput, CrudFormCheckbox } from '@/shared/components'
-import { Permission, PermissionGroups } from '@core/aggregates'
+import { Permission, PermissionGroups, Role } from '@core/aggregates'
 import { ref, toRaw } from 'vue'
-
 
 /* -------------------------------------------------------------------------- */
 /*                                  Interface                                 */
 /* -------------------------------------------------------------------------- */
 
+export type RoleEditableFields = Pick<Role, "name" | "description" | "permissions">
+
 const props = defineProps<{
-  name: string,
-  description: string,
-  permissions: Permission[]
+  role: Role
+}>()
+
+const emit = defineEmits<{
+  save: [RoleEditableFields]
 }>()
 
 
@@ -55,9 +59,9 @@ const props = defineProps<{
 /*                                    State                                   */
 /* -------------------------------------------------------------------------- */
 
-const name = ref(props.name)
-const description = ref(props.description)
-const permissions = ref(props.permissions)
+const name = ref(props.role.name)
+const description = ref(props.role.description)
+const permissions = ref(props.role.permissions)
 
 
 /* -------------------------------------------------------------------------- */
@@ -65,23 +69,24 @@ const permissions = ref(props.permissions)
 /* -------------------------------------------------------------------------- */
 
 function onPermissionUpdated(
-  permissionId: Permission,
+  permission: Permission,
   value: boolean
 ) {
-  if (value && !permissions.value.includes(permissionId)) {
-    permissions.value.push(permissionId)
+  if (value && !permissions.value.includes(permission)) {
+    permissions.value.push(permission)
   } else if (!value) {
-    permissions.value = permissions.value.filter(x => x != permissionId)
+    permissions.value = permissions.value.filter(x => x != permission)
   }
 }
 
 function onSaveButtonClicked() {
-  console.log("SAVE", {
+  emit("save", {
     name: name.value,
     description: description.value,
     permissions: toRaw(permissions.value)
   })
 }
+
 
 /* -------------------------------------------------------------------------- */
 /*                                   Helpers                                  */

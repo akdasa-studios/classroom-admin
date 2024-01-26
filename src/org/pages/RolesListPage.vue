@@ -1,8 +1,9 @@
 <template>
   <CrudTableHeader
     :title="$t('org-roles-crud')"
-    :description="$ta('org-roles-crud').description"
+    :description="$ta('org-roles-crud').header"
     :create-button-title="$ta('org-roles-crud').create"
+    @create-button-click="onCreateButtonClicked"
   />
 
   <Table class="CrudTable">
@@ -41,6 +42,7 @@ import { useRolesService } from '@/org/composables'
 import { onMounted, shallowRef } from 'vue'
 import type { Role, RoleIdentity } from '@core/aggregates'
 import { useRouter } from 'vue-router'
+import { UuidIdentity } from '@akd-studios/framework/domain'
 
 
 /* -------------------------------------------------------------------------- */
@@ -77,7 +79,10 @@ function onTableRowClicked(
   roleId: RoleIdentity
 ) {
   router.push({ name: 'org-roles-edit', params: { id: roleId.value } })
-  console.log("!!", roleId.value)
+}
+
+function onCreateButtonClicked() {
+  router.push({ name: 'org-roles-edit', params: { id: new UuidIdentity().value } })
 }
 
 /* -------------------------------------------------------------------------- */
@@ -87,7 +92,6 @@ function onTableRowClicked(
 async function fetchData() {
   roles.value = await rolesService.getAllRoles()
 }
-
 </script>
 
 

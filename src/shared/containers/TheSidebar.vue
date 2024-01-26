@@ -102,6 +102,6 @@ const routeName = computed(() => route.name?.toString())
 /* -------------------------------------------------------------------------- */
 
 function getItemVariant(linkName: string) : "active" | "inactive" | undefined {
-  return routeName.value === linkName ? "active" : "inactive"
+  return routeName.value?.startsWith(linkName) ? "active" : "inactive"
 }
 </script>

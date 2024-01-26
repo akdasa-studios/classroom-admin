@@ -1,19 +1,19 @@
 <template>
   <RoleCrudForm
     v-if="role"
-    :name="role.name"
-    :description="role.description"
-    :permissions="role.permissions"
+    :role="role"
+    @save="onSave"
   />
 </template>
 
 
 <script setup lang="ts">
-import { RoleCrudForm } from '@/org/containers'
+import { RoleCrudForm, type RoleEditableFields } from '@/org/containers'
 import { useRolesService } from '@/org/composables'
 import { useRouter } from 'vue-router';
 import { onMounted, shallowRef } from 'vue';
-import type { Role, RoleIdentity } from '@core/aggregates';
+import { Role, type RoleIdentity } from '@core/aggregates';
+import { UuidIdentity } from '@akd-studios/framework/domain';
 
 /* -------------------------------------------------------------------------- */
 /*                                  Interface                                 */
@@ -54,12 +54,22 @@ async function onEnter() {
   await fetchData()
 }
 
+async function onSave(data: RoleEditableFields) {
+  if (!role.value) { return }
+  role.value.name = data.name
+  role.value.description = data.description
+  role.value.permissions = data.permissions
+  rolesService.saveRole(role.value)
+
+  router.replace({ name: 'org-roles' })
+}
+
 
 /* -------------------------------------------------------------------------- */
 /*                                   Helpers                                  */
 /* -------------------------------------------------------------------------- */
 
 async function fetchData() {
-  role.value = await rolesService.getRole(props.roleId)
+  role.value = await rolesService.getRole(props.roleId) || new Role(new UuidIdentity(), "", "", [])
 }
 </script>
