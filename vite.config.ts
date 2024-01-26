@@ -20,7 +20,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@akd-studios/framework': rpath('./submodules/framework/lib'),
-      '@classroom/core':        rpath('./submodules/core'),
+      '@classroom/core':        rpath('./submodules/core/lib'),
       '@classroom':             rpath('./src'),
     }
   }

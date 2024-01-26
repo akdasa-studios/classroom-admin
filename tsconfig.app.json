@@ -16,7 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@akd-studios/framework/*": ["./submodules/framework/lib/*"],
-      "@classroom/core/*":        ["./submodules/core/*"],
+      "@classroom/core/*":        ["./submodules/core/lib/*"],
       "@classroom/*":             ["./src/*"],
     }
   }
