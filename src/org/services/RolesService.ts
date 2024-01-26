@@ -1,13 +1,11 @@
+import { RestRepository } from '@akd-studios/framework-persistence-rest/repository'
 import { UuidIdentity } from '@akd-studios/framework/domain'
-import { Permission, Role, type RoleIdentity } from '@classroom/core/aggregates'
-import { RestRepository } from '@classroom/shared/repositories'
+import { Role, type RoleIdentity } from '@classroom/core/aggregates'
 
-interface RoleScheme {
-  id: string,
-  name: string,
-  description: string,
-  permissions: Permission[]
-}
+
+type RoleScheme = Pick<
+  Role, 'name' | 'description' | 'permissions'
+> & { id: string }
 
 
 const RoleSerializer = (
@@ -29,8 +27,8 @@ const RoleDeserializer = (
 )
 
 export class RolesService {
-  _roles = new Map<string, Role>()
-  _rolesRepository = new RestRepository<Role, RoleScheme>('http://localhost:3000/roles', RoleSerializer, RoleDeserializer)
+  _rolesRepository = new RestRepository<Role, RoleScheme>(
+    'http://localhost:3000/roles', RoleSerializer, RoleDeserializer)
 
   async getRole(roleId: RoleIdentity): Promise<Role|undefined> {
     return this._rolesRepository.get(roleId)
