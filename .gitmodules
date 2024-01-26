@@ -4,3 +4,6 @@
 [submodule "framework"]
 	path = submodules/framework
 	url = https://github.com/akdasa-studios/framework.git
+[submodule "framework-persistence-rest"]
+	path = submodules/framework-persistence-rest
+	url = https://github.com/akdasa-studios/framework-persistence-rest
