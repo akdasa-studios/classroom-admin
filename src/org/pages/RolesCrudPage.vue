@@ -59,7 +59,7 @@ async function onSave(data: RoleEditableFields) {
   role.value.name = data.name
   role.value.description = data.description
   role.value.permissions = data.permissions
-  rolesService.saveRole(role.value)
+  await rolesService.saveRole(role.value)
 
   router.replace({ name: 'org-roles' })
 }
