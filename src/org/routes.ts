@@ -18,7 +18,9 @@ export const routes: Array<RouteRecordRaw> = [
     name: 'org-roles-edit',
     component: () => import('./pages/RolesCrudPage.vue'),
     props: route => ({
-      roleId: new UuidIdentity(route.params.id as string) as RoleIdentity,
+      roleId: route.params.id !== 'new'
+        ? new UuidIdentity(route.params.id as string) as RoleIdentity
+        : undefined
     }),
   },
   {

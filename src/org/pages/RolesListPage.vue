@@ -38,7 +38,6 @@
 
 
 <script setup lang="ts">
-import { UuidIdentity } from '@akd-studios/framework/domain'
 import type { Role, RoleIdentity } from '@classroom/core/aggregates'
 import { useRolesService } from '@classroom/org/composables'
 import { CrudTableHeader, Table, TableCell, TableHeader, TableRow } from '@classroom/shared/components'
@@ -83,7 +82,10 @@ function onTableRowClicked(
 }
 
 function onCreateButtonClicked() {
-  router.push({ name: 'org-roles-edit', params: { id: new UuidIdentity().value } })
+  router.push({
+    name: 'org-roles-edit',
+    params: { id: 'new' }
+  })
 }
 
 /* -------------------------------------------------------------------------- */
