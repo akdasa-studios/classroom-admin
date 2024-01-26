@@ -78,8 +78,8 @@
 
 
 <script setup lang="ts">
-import { Sidebar, SidebarMenuList, SidebarMenuItem } from '@classroom/shared/components'
-import { AcademicCapIcon, UserGroupIcon, KeyIcon, UsersIcon, PencilSquareIcon, Cog6ToothIcon, BanknotesIcon, ChartBarIcon } from '@heroicons/vue/24/outline'
+import { Sidebar, SidebarMenuItem, SidebarMenuList } from '@classroom/shared/components'
+import { AcademicCapIcon, BanknotesIcon, ChartBarIcon, Cog6ToothIcon, KeyIcon, PencilSquareIcon, UserGroupIcon, UsersIcon } from '@heroicons/vue/24/outline'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 

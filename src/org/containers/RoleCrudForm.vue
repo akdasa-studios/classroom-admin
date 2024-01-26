@@ -36,8 +36,8 @@
 
 
 <script setup lang="ts">
-import { CrudForm, CrudFormSectionHeader, CrudFormTextInput, CrudFormTextareaInput, CrudFormCheckbox } from '@classroom/shared/components'
 import { Permission, PermissionGroups, Role } from '@classroom/core/aggregates'
+import { CrudForm, CrudFormCheckbox, CrudFormSectionHeader, CrudFormTextInput, CrudFormTextareaInput } from '@classroom/shared/components'
 import { ref, toRaw } from 'vue'
 
 /* -------------------------------------------------------------------------- */

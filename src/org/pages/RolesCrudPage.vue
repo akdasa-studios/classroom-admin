@@ -8,12 +8,12 @@
 
 
 <script setup lang="ts">
-import { RoleCrudForm, type RoleEditableFields } from '@classroom/org/containers'
-import { useRolesService } from '@classroom/org/composables'
-import { useRouter } from 'vue-router'
-import { onMounted, shallowRef } from 'vue'
-import { Role, type RoleIdentity } from '@classroom/core/aggregates'
 import { UuidIdentity } from '@akd-studios/framework/domain'
+import { Role, type RoleIdentity } from '@classroom/core/aggregates'
+import { useRolesService } from '@classroom/org/composables'
+import { RoleCrudForm, type RoleEditableFields } from '@classroom/org/containers'
+import { onMounted, shallowRef } from 'vue'
+import { useRouter } from 'vue-router'
 
 /* -------------------------------------------------------------------------- */
 /*                                  Interface                                 */

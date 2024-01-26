@@ -10,8 +10,8 @@
 
 
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
 import { TheSidebar } from '@classroom/shared/containers'
 import { SidebarAndMainBlockLayout } from '@classroom/shared/layouts'
+import { RouterView } from 'vue-router'
 </script>
 

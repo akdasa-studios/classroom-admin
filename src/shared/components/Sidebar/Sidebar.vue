@@ -18,9 +18,9 @@
 
 
 <script setup lang="ts">
-import SidebarProfileMenuItem from './SidebarProfileMenuItem.vue'
 import SidebarCompanyBrand from './SidebarCompanyBrand.vue'
 import SidebarFooter from './SidebarFooter.vue'
+import SidebarProfileMenuItem from './SidebarProfileMenuItem.vue'
 
 /* -------------------------------------------------------------------------- */
 /*                                  Interface                                 */
