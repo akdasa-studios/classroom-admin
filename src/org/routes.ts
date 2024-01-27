@@ -26,6 +26,6 @@ export const routes: Array<RouteRecordRaw> = [
   {
     path: '/org/users',
     name: 'org-users',
-    component: () => import('./pages/AdminUsersPage.vue')
+    component: () => import('./pages/UsersListPage.vue')
   }
 ]
