@@ -47,7 +47,7 @@ defineProps<{
   padding-right: 1.5rem;
   border-right-width: 1px;
   border-right-style: solid;
-  border-color: #E5E7EB;
-  background-color: #F9FAFB;
+  border-color: hsl(var(--color-test), 97%);
+  background-color: hsl(var(--color-test), 99%);
 }
 </style>

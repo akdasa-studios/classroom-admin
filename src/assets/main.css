@@ -20,3 +20,22 @@ body {
 a {
   text-decoration: none;
 }
+
+:root {
+  /* --color-main: tomato; */
+  --color-main: 127, 127, 127;
+
+  --theme-saturation: 100%;
+  --theme-saturation-dint: calc(var(--theme-saturation) / 4);
+
+
+  --color-test-color: 221;
+
+
+  --color-test:      var(--color-test-color), var(--theme-saturation);
+  --color-test-dint: var(--color-test-color), var(--theme-saturation-dint);
+  /* --color-test-a: 0, 50%, 50%; */
+  /* --color-main-h: 0;
+  --color-main-s: 100%;
+  --color-main-l: 50%; */
+}

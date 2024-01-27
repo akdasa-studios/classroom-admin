@@ -12,14 +12,12 @@
 </template>
 
 
-<style scoped lang="scss">
-@import '@classroom/assets/theme.scss';
-
+<style scoped>
 .Table {
   overflow: hidden;
-  box-shadow: 0 1px 3px  0   rgba($color-gray, 0.2),
-              0 1px 2px -1px rgba($color-gray, 0.2),
-              0 0   0    1px rgba($color-gray, 0.1);
+  box-shadow: 0 1px 3px  0   hsla(var(--color-test), 50%, .1),
+              0 1px 2px -1px hsla(var(--color-test), 50%, .1),
+              0 0   0    1px hsla(var(--color-test), 50%, .1);
   border-radius: 0.5rem;
 }
 
@@ -28,18 +26,18 @@
 }
 
 .tbl::v-deep > * + * {
-  border-color: rgba($color-gray, .2);
+  border-color: hsla(var(--color-test), 50%, .1);
   border-top-width: 1px;
   border-bottom-width: 0px;
 }
 
 .tbd::v-deep > * + * {
-  border-color: rgba($color-gray, .1);
+  border-color: hsla(var(--color-test), 50%, .05);
   border-top-width: 1px;
   border-bottom-width: 0px;
 }
 
 .table-head {
-  background-color: rgba($color-gray, .05);
+  background-color: hsl(var(--color-test), 99%);
 }
 </style>

@@ -45,17 +45,19 @@ withDefaults(defineProps<Props>(), {
   line-height: 1.5rem;
 
   &.inactive {
-    color: #374151;
+    // color: #374151;
+    color: hsl(var(--color-test), 15%);
 
     &:hover {
-      color: #4F46E5;
-      background-color: #E5E7EB;
+      // color: #4F46E5;
+      // background-color: #E5E7EB;
+      background-color: hsla(var(--color-test), 96%);
     }
   }
 
   &.active {
-    color: #4F46E5;
-    background-color: #E5E7EB;
+    color: hsl(var(--color-test), 20%);
+    background-color: hsl(var(--color-test), 96%);
   }
 }
 
@@ -64,15 +66,16 @@ withDefaults(defineProps<Props>(), {
   height: 1.5rem;
 
   &.inactive {
-    color: #9CA3AF;
+    // color: #9CA3AF;
+    color: hsla(var(--color-test), 15%);
   }
 
   &.active {
-    color: #4F46E5;
+    color: hsl(var(--color-test), 20%);
   }
 }
 
 .SidebarMenuItem:hover .SidebarMenuItemIcon.inactive {
-  color: #4F46E5;
+  // color: #4F46E5;
 }
 </style>

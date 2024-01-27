@@ -11,6 +11,6 @@
   line-height: 1rem;
   font-weight: 600;
   line-height: 1.5rem;
-  color: #9CA3AF;
+  color: hsl(var(--color-test-dint), 70%);
 }
 </style>
