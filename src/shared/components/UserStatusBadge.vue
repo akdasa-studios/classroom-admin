@@ -18,33 +18,30 @@ defineProps<{
 
 .UserStatusBadge {
   display: inline-flex;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding: 0.25rem 0.5rem;
   align-items: center;
-  border-radius: 0.375rem;
   font-size: 0.75rem;
-  line-height: 1rem;
   font-weight: 500;
+  line-height: 1rem;
   border: 1px solid;
+  border-radius: 0.375rem;
 
   &.invited {
-    color:            color($color-primary);
-    border-color:     border-color($color-primary);
-    background-color: bg-color($color-primary);
+    color:            cl($color-primary, $text-lightness);
+    border-color:     cl($color-primary, $border-lightness);
+    background-color: cl($color-primary, $bg-lightness);
   }
 
   &.active {
-    color:            color($color-success);
-    border-color:     border-color($color-success);
-    background-color: bg-color($color-success);
+    color:            cl($color-success, $text-lightness);
+    border-color:     cl($color-success, $border-lightness);
+    background-color: cl($color-success, $bg-lightness);
   }
 
   &.inactive {
-    color:            color($color-danger);
-    border-color:     border-color($color-danger);
-    background-color: bg-color($color-danger);
+    color:            cl($color-danger, $text-lightness);
+    border-color:     cl($color-danger, $border-lightness);
+    background-color: cl($color-danger, $bg-lightness);
   }
 }
 </style>

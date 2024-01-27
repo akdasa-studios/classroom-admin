@@ -5,8 +5,9 @@
 </template>
 
 
-<style scoped>
+<style scoped lang="scss">
+@import '@classroom/assets/theme.scss';
 .TableRow:hover {
-  background-color: #F9FAFB;
+  background-color: rgba($color-gray, .025);
 }
 </style>

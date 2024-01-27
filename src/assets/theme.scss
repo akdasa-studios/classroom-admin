@@ -1,9 +1,11 @@
 @use 'sass:color';
 
 $color-primary: #4F46E5;
+$color-gray: grey;
 $color-success: #2dd36f;
 $color-warning: #ffc409;
 $color-danger: #eb445a;
+
 
 @function color($color) {
   @return color.scale($color, $lightness: -30%);
@@ -15,4 +17,13 @@ $color-danger: #eb445a;
 
 @function border-color($color) {
   @return color.scale($color, $lightness: +75%);
+}
+
+
+$text-lightness: -30%;
+$bg-lightness: +90%;
+$border-lightness: +75%;
+
+@function cl($color, $value) {
+  @return color.scale($color, $lightness: $value);
 }

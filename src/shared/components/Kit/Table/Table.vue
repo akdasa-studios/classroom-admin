@@ -1,10 +1,10 @@
 <template>
   <div class="Table">
-    <table class="min-w-full divide-y divide-gray-300 bg-gray-50">
-      <thead>
+    <table class="tbl">
+      <thead class="table-head">
         <slot name="head" />
       </thead>
-      <tbody class="divide-y divide-gray-200 bg-white">
+      <tbody class="tbd">
         <slot />
       </tbody>
     </table>
@@ -13,12 +13,33 @@
 
 
 <style scoped lang="scss">
+@import '@classroom/assets/theme.scss';
+
 .Table {
   overflow: hidden;
-  box-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  --ring-color: #000000;
-  --ring-opacity: 0.05;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  border-radius: 0.25rem;
+  box-shadow: 0 1px 3px  0   rgba($color-gray, 0.2),
+              0 1px 2px -1px rgba($color-gray, 0.2),
+              0 0   0    1px rgba($color-gray, 0.1);
+  border-radius: 0.5rem;
+}
+
+.tbl {
+  min-width: 100%;
+}
+
+.tbl::v-deep > * + * {
+  border-color: rgba($color-gray, .2);
+  border-top-width: 1px;
+  border-bottom-width: 0px;
+}
+
+.tbd::v-deep > * + * {
+  border-color: rgba($color-gray, .1);
+  border-top-width: 1px;
+  border-bottom-width: 0px;
+}
+
+.table-head {
+  background-color: rgba($color-gray, .05);
 }
 </style>
