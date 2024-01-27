@@ -9,7 +9,12 @@ const UserSerializer = (
 ): UserScheme => ({
   id: from.id.value,
   name: from.name,
-  roles: from.roleIds.map(x => ({id: x.value}))
+  email: from.email,
+  roles: from.roleIds.map(x => ({id: x.value})),
+  status: from.status,
+  title: from.title,
+  department: from.department,
+  avatarUrl: from.avatarUrl
 })
 
 const UserDeserializer = (
@@ -17,7 +22,12 @@ const UserDeserializer = (
 ): User => new User(
   new UuidIdentity(from.id),
   from.name,
-  from.roles.map(x => new UuidIdentity(x.id)) || []
+  from.email,
+  from.roles.map(x => new UuidIdentity(x.id)) || [],
+  from.status,
+  from.title,
+  from.department,
+  from.avatarUrl
 )
 
 export class UsersService {

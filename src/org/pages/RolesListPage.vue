@@ -9,13 +9,16 @@
   <Table class="CrudTable">
     <template #head>
       <TableRow>
-        <TableHeader variant="first">
+        <TableCell
+          :header="true"
+          variant="first"
+        >
           {{ $ta('org-roles-table').name }}
-        </TableHeader>
+        </TableCell>
 
-        <TableHeader>
+        <TableCell :header="true">
           {{ $ta('org-roles-table').description }}
-        </TableHeader>
+        </TableCell>
       </TableRow>
     </template>
 
@@ -40,7 +43,7 @@
 <script setup lang="ts">
 import type { Role, RoleIdentity } from '@classroom/core/aggregates'
 import { useRolesService } from '@classroom/org/composables'
-import { CrudTableHeader, Table, TableCell, TableHeader, TableRow } from '@classroom/shared/components'
+import { CrudTableHeader, Table, TableCell, TableRow } from '@classroom/shared/components'
 import { onMounted, shallowRef } from 'vue'
 import { useRouter } from 'vue-router'
 

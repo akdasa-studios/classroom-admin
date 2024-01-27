@@ -1,0 +1,18 @@
+@use 'sass:color';
+
+$color-primary: #4F46E5;
+$color-success: #2dd36f;
+$color-warning: #ffc409;
+$color-danger: #eb445a;
+
+@function color($color) {
+  @return color.scale($color, $lightness: -30%);
+}
+
+@function bg-color($color) {
+  @return color.scale($color, $lightness: +90%);
+}
+
+@function border-color($color) {
+  @return color.scale($color, $lightness: +75%);
+}
