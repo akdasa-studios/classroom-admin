@@ -7,3 +7,6 @@
 [submodule "framework-persistence-rest"]
 	path = submodules/framework-persistence-rest
 	url = https://github.com/akdasa-studios/framework-persistence-rest
+[submodule "classroom-protocol"]
+	path = submodules/classroom-protocol
+	url = https://github.com/akdasa-studios/classroom-protocol.git
