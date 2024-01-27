@@ -1,11 +1,7 @@
 import { RestRepository } from '@akd-studios/framework-persistence-rest/repository'
 import { UuidIdentity } from '@akd-studios/framework/domain'
-import { User, type RoleIdentity, type UserIdentity } from '@classroom/core/aggregates'
-
-
-type UserScheme = Pick<
-  User, 'name'
-> & { id: string, roleIds: string[] }
+import { User, type UserIdentity } from '@classroom/core/aggregates'
+import { type UserScheme } from '@classroom/protocol/user'
 
 
 const UserSerializer = (
@@ -13,7 +9,7 @@ const UserSerializer = (
 ): UserScheme => ({
   id: from.id.value,
   name: from.name,
-  roleIds: from.roleIds.map(x => x.value)
+  roles: from.roleIds.map(x => ({id: x.value}))
 })
 
 const UserDeserializer = (
@@ -21,7 +17,7 @@ const UserDeserializer = (
 ): User => new User(
   new UuidIdentity(from.id),
   from.name,
-  from.roles?.map(x => new UuidIdentity(x.id) as RoleIdentity)
+  from.roles.map(x => new UuidIdentity(x.id)) || []
 )
 
 export class UsersService {
