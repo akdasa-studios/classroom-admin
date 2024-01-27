@@ -5,6 +5,7 @@
     "src/**/*",
     "src/**/*.vue",
     "submodules/core/**/*.ts",
+    "submodules/classroom-protocol/lib/**/*.ts",
     "submodules/framework/lib/**/*.ts",
     "submodules/framework-persistence-rest/lib/**/*.ts",
   ],
@@ -18,6 +19,7 @@
     "paths": {
       "@akd-studios/framework-persistence-rest/*": ["./submodules/framework-persistence-rest/lib/*"],
       "@akd-studios/framework/*": ["./submodules/framework/lib/*"],
+      "@classroom/protocol/*":    ["./submodules/classroom-protocol/lib/*"],
       "@classroom/core/*":        ["./submodules/core/lib/*"],
       "@classroom/*":             ["./src/*"],
     }

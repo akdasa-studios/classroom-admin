@@ -21,6 +21,7 @@ export default defineConfig({
     alias: {
       '@akd-studios/framework-persistence-rest': rpath('./submodules/framework-persistence-rest/lib'),
       '@akd-studios/framework': rpath('./submodules/framework/lib'),
+      '@classroom/protocol':    rpath('./submodules/classroom-protocol/lib'),
       '@classroom/core':        rpath('./submodules/core/lib'),
       '@classroom':             rpath('./src'),
     }
