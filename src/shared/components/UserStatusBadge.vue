@@ -6,9 +6,22 @@
 
 
 <script setup lang="ts">
+import { useTheme } from '@classroom/shared/composables'
+
+/* -------------------------------------------------------------------------- */
+/*                                  Interface                                 */
+/* -------------------------------------------------------------------------- */
+
 defineProps<{
   variant: 'invited' | 'active' | 'inactive'
 }>()
+
+
+/* -------------------------------------------------------------------------- */
+/*                                Dependencies                                */
+/* -------------------------------------------------------------------------- */
+
+const { primary, success, danger } = useTheme()
 </script>
 
 
@@ -27,21 +40,33 @@ defineProps<{
   border-radius: 0.375rem;
 
   &.invited {
-    color:            cl($color-primary, $text-lightness);
-    border-color:     cl($color-primary, $border-lightness);
-    background-color: cl($color-primary, $bg-lightness);
+    --color-text:   v-bind(primary.lighten(.2).hsl);
+    --color-self:   v-bind(primary.lighten(.9).hsl);
+    --color-border: v-bind(primary.lighten(.7).hsl);
+
+    color:            var(--color-text);
+    border-color:     var(--color-border);
+    background-color: var(--color-self);
   }
 
   &.active {
-    color:            cl($color-success, $text-lightness);
-    border-color:     cl($color-success, $border-lightness);
-    background-color: cl($color-success, $bg-lightness);
+    --color-text:   v-bind(success.lighten(.2).hsl);
+    --color-self:   v-bind(success.lighten(.9).hsl);
+    --color-border: v-bind(success.lighten(.7).hsl);
+
+    color:            var(--color-text);
+    border-color:     var(--color-border);
+    background-color: var(--color-self);
   }
 
   &.inactive {
-    color:            cl($color-danger, $text-lightness);
-    border-color:     cl($color-danger, $border-lightness);
-    background-color: cl($color-danger, $bg-lightness);
+    --color-text:   v-bind(danger.lighten(.2).hsl);
+    --color-self:   v-bind(danger.lighten(.9).hsl);
+    --color-border: v-bind(danger.lighten(.7).hsl);
+
+    color:            var(--color-text);
+    border-color:     var(--color-border);
+    background-color: var(--color-self);
   }
 }
 </style>
