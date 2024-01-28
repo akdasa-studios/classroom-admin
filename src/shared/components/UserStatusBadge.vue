@@ -26,9 +26,6 @@ const { primary, success, danger } = useTheme()
 
 
 <style scoped lang="scss">
-@import '@classroom/assets/theme.scss';
-
-
 .UserStatusBadge {
   display: inline-flex;
   padding: 0.25rem 0.5rem;
