@@ -9,37 +9,37 @@
       :icon="KeyIcon"
       :title="$t('roles-title')"
       :description="$t('roles-descr')"
-      background="bg-purple-500"
+      background="bg1"
     />
     <ActionBoardItem
       :icon="UsersIcon"
       :title="$t('team-title')"
       :description="$t('team-descr')"
-      background="bg-indigo-500"
+      background="bg2"
     />
     <ActionBoardItem
       :icon="AcademicCapIcon"
       :title="$t('course-title')"
       :description="$t('course-descr')"
-      background="bg-yellow-500"
+      background="bg3"
     />
     <ActionBoardItem
       :icon="UserGroupIcon"
       :title="$t('class-title')"
       :description="$t('class-descr')"
-      background="bg-pink-500"
+      background="bg4"
     />
     <ActionBoardItem
       :icon="UsersIcon"
       :title="$t('students-title')"
       :description="$t('students-descr')"
-      background="bg-green-500"
+      background="bg5"
     />
     <ActionBoardItem
       :icon="PencilSquareIcon"
       :title="$t('homework-title')"
       :description="$t('homework-descr')"
-      background="bg-blue-500"
+      background="bg6"
     />
   </ActionBoardList>
 
@@ -59,6 +59,33 @@
 import { ActionBoardHeader, ActionBoardItem, ActionBoardList } from '@classroom/shared/components'
 import { AcademicCapIcon, KeyIcon, PencilSquareIcon, UserGroupIcon, UsersIcon } from '@heroicons/vue/24/outline'
 </script>
+
+
+<style>
+.bg1 {
+  background-color: #F59E0B;
+}
+
+.bg2 {
+  background-color: #10B981;
+}
+
+.bg3 {
+  background-color: #3B82F6;
+}
+
+.bg4 {
+  background-color: #6366F1;
+}
+
+.bg5 {
+  background-color: #8B5CF6;
+}
+
+.bg6 {
+  background-color: #EC4899;
+}
+</style>
 
 
 

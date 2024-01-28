@@ -9,6 +9,7 @@ org-users-table = Пользователи
   .description  = Описание
   .status       = Статус
   .roles        = Роли
+  .title        = Должность
 
 org-users-status = Статус
   .active   = Активен
