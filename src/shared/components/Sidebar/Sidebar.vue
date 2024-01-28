@@ -18,6 +18,7 @@
 
 
 <script setup lang="ts">
+import { useTheme } from '@classroom/shared/composables'
 import SidebarCompanyBrand from './SidebarCompanyBrand.vue'
 import SidebarFooter from './SidebarFooter.vue'
 import SidebarProfileMenuItem from './SidebarProfileMenuItem.vue'
@@ -32,11 +33,21 @@ defineProps<{
   profileName: string,
   profileImageUrl: string
 }>()
+
+
+/* -------------------------------------------------------------------------- */
+/*                                Dependencies                                */
+/* -------------------------------------------------------------------------- */
+
+const { panel } = useTheme()
 </script>
 
 
 <style scoped>
 .Sidebar {
+  --color-self:   v-bind(panel.hsl);
+  --color-border: v-bind(panel.darken(.15).alpha(.5).hsl);
+
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -45,9 +56,11 @@ defineProps<{
   overflow-y: auto;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+
+  border-color: var(--color-border);
   border-right-width: 1px;
   border-right-style: solid;
-  border-color: hsl(var(--color-test), 97%);
-  background-color: hsl(var(--color-test), 99%);
+
+  background-color: var(--color-self);
 }
 </style>

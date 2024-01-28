@@ -10,7 +10,7 @@
 interface Props {
   header?: boolean
   variant?: 'normal' | 'first' | undefined
-  align: 'left' | 'center' | 'right'
+  align?: 'left' | 'center' | 'right'
 }
 
 withDefaults(defineProps<Props>(), {
