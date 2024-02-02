@@ -9,15 +9,15 @@ import router from './router'
 import { useThemeManager } from './shared/composables'
 const themeManager = useThemeManager()
 
-const hue = 0
-const sat = 15
+const hue = 243
+const sat = 100
 themeManager.registerColor('panel',   hue, sat, 98)
 themeManager.registerColor('primary', 243, 75,  59)
 themeManager.registerColor('success', 144, 65,  60)
 themeManager.registerColor('warning', 46, 100,  52)
 themeManager.registerColor('danger',  351, 81,  59)
 
-themeManager.registerColor('text',    hue, sat / 2,  5)
+themeManager.registerColor('text',    hue, sat,  20)
 
 
 const app = createApp(App)

@@ -1,23 +1,22 @@
 <template>
   <div
-    class="mt-6 space-y-6 CrudFormCheckbox"
+    class="CrudFormCheckbox"
     @click="modelValue = !modelValue"
   >
-    <div class="relative flex gap-x-3">
-      <div class="flex h-6 items-center">
+    <div class="checkbox-section">
+      <div class="ttt">
         <input
           v-model="modelValue"
           type="checkbox"
-          class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+          class="checkbox"
         >
       </div>
-      <div class="text-sm leading-6">
-        <div
-          class="font-medium text-gray-900"
-        >
+
+      <div class="label-section">
+        <div class="label">
           {{ title }}
         </div>
-        <p class="text-gray-500">
+        <p class="description">
           {{ description }}
         </p>
       </div>
@@ -27,6 +26,10 @@
 
 
 <script setup lang="ts">
+
+/* -------------------------------------------------------------------------- */
+/*                                  Interface                                 */
+/* -------------------------------------------------------------------------- */
 defineProps<{
   title: string,
   description: string
@@ -36,8 +39,42 @@ const modelValue = defineModel<boolean>()
 </script>
 
 
-<style scoped>
+<style scoped lang="scss">
 .CrudFormCheckbox {
+
   cursor: pointer;
+  margin-top: var(--form-margin);
+  margin-bottom: var(--form-margin);
+
+  .label-section {
+    line-height: 1.5rem;
+  }
+
+  .checkbox-section {
+    display: flex;
+    position: relative;
+    column-gap: 0.75rem;
+  }
+
+  .ttt {
+    display: flex;
+    align-items: center;
+    height: 1.5rem;
+  }
+
+  .checkbox {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--color-primary);
+  }
+
+  .label {
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .description {
+    color: var(--color-text-500);
+  }
 }
 </style>

@@ -1,15 +1,13 @@
 <template>
-  <div class="mt-8">
-    <div>
-      <label class="label">
-        {{ label }}
-      </label>
-      <div class="mt-2">
-        <Input
-          v-model="modelValue"
-          v-bind="$attrs"
-        />
-      </div>
+  <div class="CrudFormTextInput">
+    <div class="label">
+      {{ label }}
+    </div>
+    <div class="input-section">
+      <Input
+        v-model="modelValue"
+        v-bind="$attrs"
+      />
     </div>
   </div>
 </template>
@@ -31,12 +29,12 @@ const modelValue = defineModel<string>('')
 
 
 <style scoped>
+.CrudFormTextInput {
+  margin-top: var(--form-margin);
+  margin-bottom: var(--form-margin);
+}
+
 .label {
-  display: block;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  font-weight: 500;
-  line-height: 1.5rem;
-  color: #111827;
+  margin-bottom: var(--form-margin-label);
 }
 </style>

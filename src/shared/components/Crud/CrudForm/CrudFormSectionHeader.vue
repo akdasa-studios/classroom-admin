@@ -1,11 +1,11 @@
 <template>
   <div>
-    <h2 class="text-base font-semibold leading-7 text-gray-900">
+    <h2 class="CrudFormSectionHeader">
       {{ title }}
     </h2>
     <p
       v-if="description"
-      class="mt-1 text-sm leading-6 text-gray-600"
+      class="description"
     >
       {{ description }}
     </p>
@@ -22,4 +22,11 @@ defineProps<{
 
 
 <style scoped>
+.CrudFormSectionHeader {
+  font-weight: 600;
+}
+
+.description {
+  color: var(--color-text-500);
+}
 </style>
