@@ -10,6 +10,7 @@
       :title="$t('roles-title')"
       :description="$t('roles-descr')"
       background="bg1"
+      @click="navigate('org-roles')"
     />
     <ActionBoardItem
       :icon="UsersIcon"
@@ -42,22 +43,28 @@
       background="bg6"
     />
   </ActionBoardList>
-
-  <div class="mt-4 flex">
-    <a
-      href="#"
-      class="text-sm font-medium text-indigo-600 hover:text-indigo-500"
-    >
-      Or start from an empty project
-      <span aria-hidden="true"> &rarr;</span>
-    </a>
-  </div>
 </template>
 
 
 <script setup lang="ts">
 import { ActionBoardHeader, ActionBoardItem, ActionBoardList } from '@classroom/shared/components'
 import { AcademicCapIcon, KeyIcon, PencilSquareIcon, UserGroupIcon, UsersIcon } from '@heroicons/vue/24/outline'
+import { useRouter } from 'vue-router'
+
+/* -------------------------------------------------------------------------- */
+/*                                Dependencies                                */
+/* -------------------------------------------------------------------------- */
+
+const router = useRouter()
+
+/* -------------------------------------------------------------------------- */
+/*                                   Helpers                                  */
+/* -------------------------------------------------------------------------- */
+
+function navigate(to: string) {
+  router.push({ name: to })
+}
+
 </script>
 
 

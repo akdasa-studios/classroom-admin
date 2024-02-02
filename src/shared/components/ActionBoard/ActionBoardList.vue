@@ -16,9 +16,9 @@
   margin-top: 1.5rem;
   grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 1.5rem;
-  border-top-width: 1px;
-  border-bottom-width: 1px;
-  border-color: #E5E7EB;
+  grid-auto-rows: 1fr;
+  /* border-top-width: 1px;
+  border-bottom-width: 1px; */
 
   @media (min-width: 1024px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));

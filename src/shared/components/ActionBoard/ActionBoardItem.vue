@@ -1,7 +1,7 @@
 <template>
-  <a
-    href="#"
+  <div
     class="ActionBoardItem"
+    @click="onItemClicked"
   >
     <div :class="[background, 'ActionBoardItemPlate']">
       <component
@@ -13,21 +13,25 @@
 
     <div>
       <h3 class="header">
-        <a href="#">
+        <div>
           <span>{{ title }}</span>
           <span aria-hidden="true"> &rarr;</span>
-        </a>
+        </div>
       </h3>
       <p class="description">
         {{ description }}
       </p>
     </div>
-  </a>
+  </div>
 </template>
 
 
 <script setup lang="ts">
 import type { FunctionalComponent } from 'vue'
+
+/* -------------------------------------------------------------------------- */
+/*                                  Interface                                 */
+/* -------------------------------------------------------------------------- */
 
 defineProps<{
   title: string,
@@ -35,6 +39,18 @@ defineProps<{
   icon: FunctionalComponent
   background: string
 }>()
+
+const emit = defineEmits<{
+  click: []
+}>()
+
+/* -------------------------------------------------------------------------- */
+/*                                  Handlers                                  */
+/* -------------------------------------------------------------------------- */
+
+function onItemClicked() {
+  emit('click')
+}
 </script>
 
 
@@ -47,10 +63,12 @@ defineProps<{
   gap: 1rem;
   align-items: center;
   border-radius: 0.75rem;
+  cursor: pointer;
 
-  &:hover {
-    background-color: rgb(229 231 235);
-  }
+  // TODO
+  // &:hover {
+  //   background-color: rgb(229 231 235);
+  // }
 }
 
 .ActionBoardItemPlate {
@@ -70,16 +88,14 @@ defineProps<{
 }
 
 .header {
-  font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 500;
-  color: #111827;
+  color: var(--color-text-900);
 }
 
 .description {
   margin-top: 0.25rem;
-  font-size: 0.875rem;
   line-height: 1.25rem;
-  color: #6B7280;
+  color: var(--color-text-500);
 }
 </style>

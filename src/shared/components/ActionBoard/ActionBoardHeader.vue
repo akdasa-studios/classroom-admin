@@ -20,18 +20,12 @@ defineProps<{
 <style scoped lang="scss">
 .ActionBoardHeader {
   .header {
-    font-size: 1rem;
-    line-height: 1.5rem;
     font-weight: 600;
-    line-height: 1.5rem;
-    color: #111827;
+    color: var(--color-text-900);
   }
 
   .description {
-    margin-top: 0.25rem;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    color: #6B7280;
+    color: var(--color-text-500);
   }
 }
 </style>
