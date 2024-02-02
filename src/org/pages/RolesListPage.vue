@@ -26,13 +26,13 @@
       v-for="role in roles"
       :key="role.id.value"
     >
-      <TableCell variant="first">
-        <span
-          class="roleNav"
-          @click="onTableRowClicked(role.id)"
-        >{{ role.name }}</span>
+      <TableCell
+        variant="first"
+        @click="onTableRowClicked(role.id)"
+      >
+        {{ role.name }}
       </TableCell>
-      <TableCell class="text-gray-500">
+      <TableCell class="color-text-500">
         {{ role.description }}
       </TableCell>
     </TableRow>
@@ -104,9 +104,5 @@ async function fetchData() {
 <style scoped>
 .CrudTable {
   margin-top: 2rem;
-}
-
-.roleNav {
-  cursor: pointer;
 }
 </style>

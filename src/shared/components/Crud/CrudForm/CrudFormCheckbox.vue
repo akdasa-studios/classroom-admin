@@ -70,7 +70,6 @@ const modelValue = defineModel<boolean>()
 
   .label {
     font-weight: 500;
-    color: var(--color-text);
   }
 
   .description {

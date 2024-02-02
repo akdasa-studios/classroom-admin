@@ -53,16 +53,19 @@ function onSaveButtonClicked() {
 </script>
 
 
-<style>
+<style scoped>
 .CrudFormActionButtons {
   display: flex;
   padding-top: 1rem;
-  padding-bottom: 1rem;
   margin-top: 1rem;
-  margin-bottom: 1rem;
   column-gap: 1.5rem;
+  border-color: #e5e7eb; /* TODO */
   justify-content: flex-end;
   align-items: center;
   border-top-width: 1px;
+}
+
+.grow {
+  flex-grow: 1;
 }
 </style>

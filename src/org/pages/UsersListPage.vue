@@ -81,7 +81,6 @@
 import type { Role, RoleIdentity, User, UserIdentity } from '@classroom/core/aggregates'
 import { useRolesService, useUsersService } from '@classroom/org/composables'
 import { Avatar, CrudTableHeader, Table, TableCell, TableRow, UserStatusBadge } from '@classroom/shared/components'
-import { useTheme } from '@classroom/shared/composables'
 import { onMounted, shallowRef } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -92,7 +91,6 @@ import { useRouter } from 'vue-router'
 const usersService = useUsersService()
 const rolesService = useRolesService()
 const router = useRouter()
-const { text } = useTheme()
 
 
 /* -------------------------------------------------------------------------- */
@@ -157,10 +155,6 @@ async function fetchData() {
 
 <style scoped lang="scss">
 .CrudTable {
-  --color:     v-bind(text.hsl);
-  --color-dim: v-bind(text.lighten(.5).desaturate(.9).hsl);
-
-  color: var(--color);
   margin-top: 2rem;
 
   .UserCell {
@@ -177,7 +171,7 @@ async function fetchData() {
   }
 
   .text-dim {
-    color: var(--color-dim);
+    color: var(--color-text-500);
   }
 }
 </style>

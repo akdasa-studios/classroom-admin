@@ -34,6 +34,11 @@ const modelValue = defineModel<string>()
   height: 2.5rem;
   line-height: 1.25rem;
 }
+
+.Input:focus {
+  border: 1px solid;
+  border-color: var(--color-primary);
+}
 </style>
 
 

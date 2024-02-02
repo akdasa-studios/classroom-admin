@@ -27,8 +27,6 @@ withDefaults(defineProps<Props>(), {
   padding-right: 0.75rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
   white-space: nowrap;
 
   &.header {
@@ -46,6 +44,7 @@ withDefaults(defineProps<Props>(), {
 
   &.first {
     padding-left: 1.5rem;
+    cursor: pointer;
   }
 
 

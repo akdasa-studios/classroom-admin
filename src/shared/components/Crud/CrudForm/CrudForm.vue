@@ -1,11 +1,11 @@
 <template>
-  <div class="space-y-4">
-    <CrudFormSectionHeader
-      :title="title"
-      :description="description"
-    />
-    <slot />
-  </div>
+  <h1 class="text-lg">
+    {{ title }}
+  </h1>
+  <p class="color-text-500">
+    {{ description }}
+  </p>
+  <slot />
 
   <CrudFormActionButtons
     @save="onSaveButtonClicked"
@@ -16,7 +16,7 @@
 
 
 <script setup lang="ts">
-import { CrudFormActionButtons, CrudFormSectionHeader } from '@classroom/shared/components'
+import { CrudFormActionButtons } from '@classroom/shared/components'
 
 /* -------------------------------------------------------------------------- */
 /*                                  Interface                                 */

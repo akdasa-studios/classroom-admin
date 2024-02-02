@@ -54,9 +54,9 @@ const { panel } = useTheme()
   padding: 0.5rem;
   column-gap: 0.75rem;
   border-radius: 0.375rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  line-height: 1.5rem;
+  align-items: center;
+  // font-weight: 500;
+  // line-height: 1.5rem;
 
 
   /* ------------------------------------------------------------------------ */
@@ -82,8 +82,8 @@ const { panel } = useTheme()
   /* ------------------------------------------------------------------------ */
 
   .SidebarMenuItemIcon {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.25rem;
+    height: 1.25rem;
 
     &.inactive {
       color: var(--color-inactive);

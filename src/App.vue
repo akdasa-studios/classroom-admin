@@ -21,9 +21,9 @@ import { useTheme } from './shared/composables'
 
 const { text, primary } = useTheme()
 
-setTheme('--color-text', text.hsl)
 setTheme('--color-primary', primary.hsl)
-setTheme('--color-text-500', text.desaturate(.8).lighten(.4).hsl)
+setTheme('--color-text-500', text.desaturate(.8).hsl)
+setTheme('--color-text-900', text.darken(.8).hsl)
 
 /* -------------------------------------------------------------------------- */
 /*                                   Helpers                                  */
@@ -40,6 +40,10 @@ html {
   --form-margin: 1rem;
   --form-margin-label: 0.25rem;
 
-  color: var(--color-text);
+  color: var(--color-text-900);
+
+  .color-text-500 { color: var(--color-text-500); }
+  .text-sm { font-size: 0.875rem; }
+  .text-lg { font-weight: 600; font-size: 1.275rem; }
 }
 </style>
