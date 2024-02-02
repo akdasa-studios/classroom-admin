@@ -28,8 +28,8 @@ const route = useRoute()
 }
 
 .Main {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   padding-left: 20em;
   padding-right: 2rem;
   height: 100%;

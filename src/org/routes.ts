@@ -7,11 +7,17 @@ export const routes: Array<RouteRecordRaw> = [
     path: '/org',
     name: 'org',
     component: () => import('./pages/AdminIndexPage.vue'),
+    meta: {
+      breadcrumbs: ['org']
+    }
   },
   {
     path: '/org/roles',
     name: 'org-roles',
-    component: () => import('./pages/RolesListPage.vue')
+    component: () => import('./pages/RolesListPage.vue'),
+    meta: {
+      breadcrumbs: ['org', 'org-roles']
+    }
   },
   {
     path: '/org/roles/:id',
@@ -22,10 +28,16 @@ export const routes: Array<RouteRecordRaw> = [
         ? new UuidIdentity(route.params.id as string) as RoleIdentity
         : undefined
     }),
+    meta: {
+      breadcrumbs: ['org', 'org-roles', 'org-roles-edit']
+    }
   },
   {
     path: '/org/users',
     name: 'org-users',
-    component: () => import('./pages/UsersListPage.vue')
+    component: () => import('./pages/UsersListPage.vue'),
+    meta: {
+      breadcrumbs: ['org', 'org-users']
+    }
   }
 ]

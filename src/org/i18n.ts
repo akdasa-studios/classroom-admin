@@ -1,5 +1,8 @@
 import { FluentResource } from '@fluent/bundle'
 
+import enBreadcrumbs from './i18n/breadcrumbs/en.ftl?raw'
+import ruBreadcrumbs from './i18n/breadcrumbs/ru.ftl?raw'
+
 import enSidebarMessages from './i18n/sidebar/en.ftl?raw'
 import ruSidebarMessages from './i18n/sidebar/ru.ftl?raw'
 
@@ -17,6 +20,7 @@ import ruCrudMessages from './i18n/crud/ru.ftl?raw'
 
 export default {
   ru: [
+    new FluentResource(ruBreadcrumbs),
     new FluentResource(ruSidebarMessages),
     new FluentResource(ruRolesMessages),
     new FluentResource(ruUsersMessages),
@@ -24,6 +28,7 @@ export default {
     new FluentResource(ruCrudMessages),
   ],
   en: [
+    new FluentResource(enBreadcrumbs),
     new FluentResource(enSidebarMessages),
     new FluentResource(enRolesMessages),
     new FluentResource(enUsersMessages),
