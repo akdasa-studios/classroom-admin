@@ -1,77 +1,59 @@
 <template>
   <RoleCrudForm
-    v-if="role"
-    :role="role"
+    v-if="state.model"
+    v-model="state.view"
+    :permission-groups="getPermissions()"
     @save="onSave"
   />
 </template>
 
 
 <script setup lang="ts">
-import { UuidIdentity } from '@akd-studios/framework/domain'
-import { Role, type RoleIdentity } from '@classroom/core/aggregates'
+import { PermissionGroups, Permission, Role, type RoleIdentity } from '@classroom/core/aggregates'
+import { RoleCrudForm, EmptyRole } from  '@classroom/org/components'
 import { useRolesService } from '@classroom/org/composables'
-import { RoleCrudForm, type RoleEditableFields } from '@classroom/org/containers'
-import { onMounted, shallowRef } from 'vue'
-import { useRouter } from 'vue-router'
+import { useFluent } from 'fluent-vue'
+import { useAppRouter, useCrudAsyncState } from '@classroom/shared/composables'
+import { roleToViewModel, updateModel } from '@classroom/org/helpers'
+import { UuidIdentity } from '@akd-studios/framework/domain'
 
-/* -------------------------------------------------------------------------- */
-/*                                  Interface                                 */
-/* -------------------------------------------------------------------------- */
-
+// --- Interface ---------------------------------------------------------------
 const props = defineProps<{
   roleId: RoleIdentity | undefined
 }>()
 
-
-/* -------------------------------------------------------------------------- */
-/*                                Dependencies                                */
-/* -------------------------------------------------------------------------- */
-
+// --- Dependencies ------------------------------------------------------------
+const fluent = useFluent()
 const rolesService = useRolesService()
-const router = useRouter()
+const router = useAppRouter()
 
+// --- State -------------------------------------------------------------------
+const { state } = useCrudAsyncState({
+  id:      props.roleId?.value,
+  fetcher: (id) => rolesService.getRole(new UuidIdentity(id)), 
+  mapper:  roleToViewModel, 
+  empty:   [new Role(new UuidIdentity(), "", "", []), EmptyRole]
+})
 
-/* -------------------------------------------------------------------------- */
-/*                                    State                                   */
-/* -------------------------------------------------------------------------- */
-
-const role = shallowRef<Role|undefined>(undefined)
-
-
-/* -------------------------------------------------------------------------- */
-/*                                    Hooks                                   */
-/* -------------------------------------------------------------------------- */
-
-onMounted(onEnter)
-
-
-/* -------------------------------------------------------------------------- */
-/*                                  Handlers                                  */
-/* -------------------------------------------------------------------------- */
-
-async function onEnter() {
-  await fetchData()
+// --- Handlers ----------------------------------------------------------------
+async function onSave() {
+  if (!state.value.model) { return }
+  updateModel(state.value.model, state.value.view)
+  await rolesService.saveRole(state.value.model)
+  router.replace('org-roles')
 }
 
-async function onSave(data: RoleEditableFields) {
-  if (!role.value) { return }
-  role.value.name = data.name
-  role.value.description = data.description
-  role.value.permissions = data.permissions
-  await rolesService.saveRole(role.value)
-
-  router.replace({ name: 'org-roles' })
-}
-
-
-/* -------------------------------------------------------------------------- */
-/*                                   Helpers                                  */
-/* -------------------------------------------------------------------------- */
-
-async function fetchData() {
-  role.value = props.roleId
-    ? await rolesService.getRole(props.roleId)
-    :  new Role(new UuidIdentity(), '', '', [])
+// --- Helpers -----------------------------------------------------------------
+function getPermissions() {
+  return PermissionGroups.map(groupId => ({
+    id: groupId,
+    name: fluent.$t(`permission-${groupId}`),
+    description: fluent.$ta(`permission-${groupId}`).description,
+    permissions: Object.values(Permission).filter(p => p.startsWith(groupId)).map(p => ({
+      id: p,
+      name: fluent.$t(`permission-${p}`),
+      description:  fluent.$ta(`permission-${groupId}`).description
+    }))
+  }))
 }
 </script>

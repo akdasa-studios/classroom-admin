@@ -3,106 +3,36 @@
     :title="$t('org-roles-crud')"
     :description="$ta('org-roles-crud').header"
     :create-button-title="$ta('org-roles-crud').create"
-    @create-button-click="onCreateButtonClicked"
+    @create-button-click="router.go('org-roles-edit', {id: 'new'})"
   />
 
-  <Table class="CrudTable">
-    <template #head>
-      <TableRow>
-        <TableCell
-          :header="true"
-          variant="first"
-        >
-          {{ $ta('org-roles-table').name }}
-        </TableCell>
-
-        <TableCell :header="true">
-          {{ $ta('org-roles-table').description }}
-        </TableCell>
-      </TableRow>
-    </template>
-
-    <TableRow
-      v-for="role in roles"
-      :key="role.id.value"
-    >
-      <TableCell
-        variant="first"
-        @click="onTableRowClicked(role.id)"
-      >
-        {{ role.name }}
-      </TableCell>
-      <TableCell class="color-text-500">
-        {{ role.description }}
-      </TableCell>
-    </TableRow>
-  </Table>
+  <RolesTable 
+    :items="roles"
+    class="RolesTable"
+    @click="r => router.go('org-roles-edit', { id: r.id.value })"
+  />
 </template>
 
 
 <script setup lang="ts">
-import type { Role, RoleIdentity } from '@classroom/core/aggregates'
+import { useAsyncState } from '@vueuse/core'
+import type { Role } from '@classroom/core/aggregates'
+import { CrudTableHeader } from '@classroom/shared/components'
+import { RolesTable } from '@classroom/org/components'
 import { useRolesService } from '@classroom/org/composables'
-import { CrudTableHeader, Table, TableCell, TableRow } from '@classroom/shared/components'
-import { onMounted, shallowRef } from 'vue'
-import { useRouter } from 'vue-router'
+import { useAppRouter } from '@classroom/shared/composables'
 
-
-/* -------------------------------------------------------------------------- */
-/*                                Dependencies                                */
-/* -------------------------------------------------------------------------- */
-
+// --- Dependencies ------------------------------------------------------------
+const router = useAppRouter()
 const rolesService = useRolesService()
-const router = useRouter()
 
-
-/* -------------------------------------------------------------------------- */
-/*                                    State                                   */
-/* -------------------------------------------------------------------------- */
-
-const roles = shallowRef<readonly Role[]>([])
-
-
-/* -------------------------------------------------------------------------- */
-/*                                    Hooks                                   */
-/* -------------------------------------------------------------------------- */
-
-onMounted(onEnter)
-
-
-/* -------------------------------------------------------------------------- */
-/*                                  Handlers                                  */
-/* -------------------------------------------------------------------------- */
-
-async function onEnter() {
-  await fetchData()
-}
-
-function onTableRowClicked(
-  roleId: RoleIdentity
-) {
-  router.push({ name: 'org-roles-edit', params: { id: roleId.value } })
-}
-
-function onCreateButtonClicked() {
-  router.push({
-    name: 'org-roles-edit',
-    params: { id: 'new' }
-  })
-}
-
-/* -------------------------------------------------------------------------- */
-/*                                   Helpers                                  */
-/* -------------------------------------------------------------------------- */
-
-async function fetchData() {
-  roles.value = await rolesService.getAllRoles()
-}
+// --- State -------------------------------------------------------------------
+const { state: roles } = useAsyncState<readonly Role[]>(rolesService.getAllRoles(), [])
 </script>
 
 
 <style scoped>
-.CrudTable {
-  margin-top: 2rem;
+.RolesTable { 
+  margin-top: 2em;
 }
 </style>

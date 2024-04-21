@@ -1,7 +1,7 @@
 <template>
   <div
     class="CrudFormCheckbox"
-    @click="modelValue = !modelValue"
+    @click="onClicked"
   >
     <div class="checkbox-section">
       <div class="ttt">
@@ -9,6 +9,7 @@
           v-model="modelValue"
           type="checkbox"
           class="checkbox"
+          :value="value"
         >
       </div>
 
@@ -26,16 +27,26 @@
 
 
 <script setup lang="ts">
-
-/* -------------------------------------------------------------------------- */
-/*                                  Interface                                 */
-/* -------------------------------------------------------------------------- */
-defineProps<{
+// --- Interface ---------------------------------------------------------------
+const props = defineProps<{
   title: string,
   description: string
+  value?: string
 }>()
+const modelValue = defineModel<boolean|string[]>()
 
-const modelValue = defineModel<boolean>()
+// --- Interface ---------------------------------------------------------------
+function onClicked(value: boolean|string[]) {
+  if (typeof value === 'boolean') {
+    modelValue.value = !modelValue.value
+  } else {
+    if (modelValue.value.includes(props.value)) {
+      modelValue.value = modelValue.value.filter(x => x !== props.value)
+    } else {
+      modelValue.value.push(props.value)
+    }
+  }
+}
 </script>
 
 

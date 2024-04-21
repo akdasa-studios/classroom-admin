@@ -30,7 +30,7 @@ export class RolesService {
   _rolesRepository = new RestRepository<Role, RoleScheme>(
     'http://localhost:3000/roles', RoleSerializer, RoleDeserializer)
 
-  async getRole(roleId: RoleIdentity): Promise<Role|undefined> {
+  async getRole(roleId: RoleIdentity): Promise<Role> {
     return this._rolesRepository.get(roleId)
   }
 
