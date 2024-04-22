@@ -36,14 +36,17 @@ const props = defineProps<{
 const modelValue = defineModel<boolean|string[]>()
 
 // --- Interface ---------------------------------------------------------------
-function onClicked(value: boolean|string[]) {
-  if (typeof value === 'boolean') {
+function onClicked() { //value: boolean|Array<string>) {
+
+  if (modelValue.value === undefined) { return; }
+  if (typeof modelValue.value === 'boolean') {
     modelValue.value = !modelValue.value
-  } else {
-    if (modelValue.value.includes(props.value)) {
-      modelValue.value = modelValue.value.filter(x => x !== props.value)
+  } else if (Array.isArray(modelValue.value) && props.value) {
+    const values = modelValue.value as string[]
+    if (values.includes(props.value)) {
+      modelValue.value = values.filter(x => x !== props.value)
     } else {
-      modelValue.value.push(props.value)
+      values.push(props.value)
     }
   }
 }

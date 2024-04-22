@@ -19,7 +19,10 @@ export function useCrudAsyncState<TModel, TView>({
     id 
       ? fetcher(id).then((model: TModel) => ({ model, view: mapper(model) }))
       : new Promise(() => empty),
-    { model: empty[0], view: empty[1] }, { shallow: false }
+    { model: empty[0], view: empty[1] }, { 
+      // @ts-ignore
+      shallow: false
+    }
   )
 
   return { state }

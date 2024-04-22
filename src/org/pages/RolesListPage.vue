@@ -7,27 +7,31 @@
   />
 
   <RolesTable 
-    :items="roles"
+    :items="state.view"
     class="RolesTable"
-    @click="r => router.go('org-roles-edit', { id: r.id.value })"
+    @click="r => router.go('org-roles-edit', { id: r.id })"
   />
 </template>
 
 
 <script setup lang="ts">
-import { useAsyncState } from '@vueuse/core'
-import type { Role } from '@classroom/core/aggregates'
-import { CrudTableHeader } from '@classroom/shared/components'
+import { type Role } from '@classroom/core/aggregates'
 import { RolesTable } from '@classroom/org/components'
+import { CrudTableHeader } from '@classroom/shared/components'
+import { useAppRouter, useListAsyncState } from '@classroom/shared/composables'
 import { useRolesService } from '@classroom/org/composables'
-import { useAppRouter } from '@classroom/shared/composables'
+import { type Role as RoleViewModel } from '@classroom/org/components'
+import { roleToViewModel } from '@classroom/org/helpers'
 
 // --- Dependencies ------------------------------------------------------------
 const router = useAppRouter()
 const rolesService = useRolesService()
 
 // --- State -------------------------------------------------------------------
-const { state: roles } = useAsyncState<readonly Role[]>(rolesService.getAllRoles(), [])
+const { state } = useListAsyncState<Role, RoleViewModel>({
+  fetcher: () => rolesService.getAllRoles(),
+  mapper:  roleToViewModel, 
+})
 </script>
 
 
@@ -36,3 +40,4 @@ const { state: roles } = useAsyncState<readonly Role[]>(rolesService.getAllRoles
   margin-top: 2em;
 }
 </style>
+

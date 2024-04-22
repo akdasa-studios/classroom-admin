@@ -7,7 +7,7 @@
     "submodules/core/**/*.ts",
     "submodules/classroom-protocol/lib/**/*.ts",
     "submodules/framework/lib/**/*.ts",
-    "submodules/framework-persistence-rest/lib/**/*.ts",
+    "submodules/framework-persistence-rest/lib/**/*.ts"
   ],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
@@ -21,7 +21,7 @@
       "@akd-studios/framework/*": ["./submodules/framework/lib/*"],
       "@classroom/protocol/*":    ["./submodules/classroom-protocol/lib/*"],
       "@classroom/core/*":        ["./submodules/core/lib/*"],
-      "@classroom/*":             ["./src/*"],
+      "@classroom/*":             ["./src/*"]
     }
   }
 }
