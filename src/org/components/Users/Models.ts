@@ -8,3 +8,15 @@ export type User = {
   roles: string[]
   avatarUrl?: string
 }
+
+export const EmptyUser: User = {
+  id: "",
+  name: "",
+  email: "",
+  title: "",
+  department: "",
+  status: "inactive",
+  roles: [],
+  avatarUrl: "",
+} 
+

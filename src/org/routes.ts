@@ -37,5 +37,18 @@ export const routes: Array<RouteRecordRaw> = [
     meta: {
       breadcrumbs: ['org', 'org-users']
     }
-  }
+  },
+  {
+    path: '/org/users/:id',
+    name: 'org-users-edit',
+    component: () => import('./pages/UsersCrudPage.vue'),
+    props: route => ({
+      roleId: route.params.id !== 'new'
+        ? route.params.id as string
+        : undefined
+    }),
+    meta: {
+      breadcrumbs: ['org', 'org-users', 'org-users-edit']
+    }
+  },
 ]
