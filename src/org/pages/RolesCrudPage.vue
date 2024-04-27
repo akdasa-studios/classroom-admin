@@ -12,6 +12,7 @@ import { useFluent } from 'fluent-vue'
 import { useAsyncState } from '@vueuse/core'
 import { useAppRouter  } from '@classroom/shared/composables'
 import { PermissionGroups, Permissions } from '@classroom/shared/models'
+import { pick } from '@classroom/shared/utils'
 import { useRolesService } from '@classroom/org/composables'
 import { RoleCrudForm, EmptyRole, type Role } from '@classroom/org/components'
 
@@ -33,19 +34,10 @@ const { state } = useAsyncState(
 
 // --- Handlers ----------------------------------------------------------------
 async function onSave() {
-  if (!props.roleId) {
-    await rolesService.create({
-      name: state.value.name,
-      description: state.value.description,
-      permissions: state.value.permissions
-    })
-  } else {
-    await rolesService.update(props.roleId, {
-      name: state.value.name,
-      description: state.value.description,
-      permissions: state.value.permissions
-    })
-  }
+  const payload = pick(state.value, 'name', 'description', 'permissions')
+  await (!props.roleId 
+    ? rolesService.create(payload)
+    : rolesService.update(props.roleId, payload))
   router.replace('org-roles')
 }
 
@@ -53,10 +45,8 @@ async function onSave() {
 async function fetchData(roleId: string): Promise<Role> {
   const rolesResponse = await rolesService.getOne(roleId)
   return {
-    id: rolesResponse.id,
-    name: rolesResponse.name,
-    description: rolesResponse.description,
-    permissions: rolesResponse.permissions || [],
+    ...pick(rolesResponse, 'id', 'name', 'description'),
+    permissions: rolesResponse.permissions || []
   }
 }
 
