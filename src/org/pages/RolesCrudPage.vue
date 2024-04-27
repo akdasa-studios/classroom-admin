@@ -13,8 +13,7 @@ import { useAsyncState } from '@vueuse/core'
 import { useAppRouter  } from '@classroom/shared/composables'
 import { PermissionGroups, Permissions } from '@classroom/shared/models'
 import { useRolesService } from '@classroom/org/composables'
-import { roleToViewModel } from '@classroom/org/helpers'
-import { RoleCrudForm, EmptyRole } from  '@classroom/org/components'
+import { RoleCrudForm, EmptyRole, type Role } from '@classroom/org/components'
 
 // --- Interface ---------------------------------------------------------------
 const props = defineProps<{
@@ -28,7 +27,7 @@ const rolesService = useRolesService()
 
 // --- State -------------------------------------------------------------------
 const { state } = useAsyncState(
-  async () => props.roleId ? roleToViewModel(await rolesService.getOne(props.roleId)) : EmptyRole,
+  async () => props.roleId ? await fetchData(props.roleId) : EmptyRole,
   EmptyRole, { shallow: false }
 )
 
@@ -51,6 +50,16 @@ async function onSave() {
 }
 
 // --- Helpers -----------------------------------------------------------------
+async function fetchData(roleId: string): Promise<Role> {
+  const rolesResponse = await rolesService.getOne(roleId)
+  return {
+    id: rolesResponse.id,
+    name: rolesResponse.name,
+    description: rolesResponse.description,
+    permissions: rolesResponse.permissions || [],
+  }
+}
+
 function getPermissions() {
   return PermissionGroups.map(groupId => ({
     id: groupId,
