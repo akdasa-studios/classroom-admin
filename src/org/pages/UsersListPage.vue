@@ -17,7 +17,7 @@
 import { useAsyncState } from '@vueuse/core'
 import { useAppRouter  } from '@classroom/shared/composables'
 import { CrudTableHeader } from '@classroom/shared/components'
-import { type UserViewModel } from '@classroom/org/components'
+import { type User } from '@classroom/org/components'
 import { UsersTable } from '@classroom/org/components'
 import { useRolesService, useUsersService } from '@classroom/org/composables'
 
@@ -27,11 +27,11 @@ const rolesService = useRolesService()
 const router = useAppRouter()
 
 // --- State -------------------------------------------------------------------
-const { state: users } = useAsyncState<UserViewModel[]>(fetchData, [])
+const { state: users } = useAsyncState<User[]>(fetchData, [])
 
 // --- Handlers ----------------------------------------------------------------
-function onTableRowClicked(userId: string) {
-  router.go('org-users-edit', { id: userId })
+function onTableRowClicked(user: User) {
+  router.go('org-users-edit', { id: user.id })
 }
 
 function onCreateButtonClicked() {
@@ -39,7 +39,7 @@ function onCreateButtonClicked() {
 }
 
 // --- Helpers -----------------------------------------------------------------
-async function fetchData(): Promise<UserViewModel[]> {
+async function fetchData(): Promise<User[]> {
   const [
     usersResponse,
     rolesResponse,
