@@ -4,10 +4,7 @@
     "env.d.ts",
     "src/**/*",
     "src/**/*.vue",
-    "submodules/core/**/*.ts",
-    "submodules/classroom-protocol/lib/**/*.ts",
-    "submodules/framework/lib/**/*.ts",
-    "submodules/framework-persistence-rest/lib/**/*.ts"
+    "submodules/protocol/lib/**/*.ts"
   ],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
@@ -17,9 +14,7 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "@akd-studios/framework-persistence-rest/*": ["./submodules/framework-persistence-rest/lib/*"],
-      "@akd-studios/framework/*": ["./submodules/framework/lib/*"],
-      "@classroom/protocol/*":    ["./submodules/classroom-protocol/lib/*"],
+      "@classroom/protocol/*":    ["./submodules/protocol/lib/*"],
       "@classroom/core/*":        ["./submodules/core/lib/*"],
       "@classroom/*":             ["./src/*"]
     }

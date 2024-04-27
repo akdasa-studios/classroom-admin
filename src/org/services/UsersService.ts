@@ -1,49 +1,20 @@
-import { RestRepository } from '@akd-studios/framework-persistence-rest/repository'
-import { UuidIdentity } from '@akd-studios/framework/domain'
-import { User, type UserIdentity } from '@classroom/core/aggregates'
-import { type UserScheme } from '@classroom/protocol/user'
+import type { GetUserResponse, GetUsersResponse, CreateUserRequest, UpdateUserResponse, UpdateUserRequest } from '@classroom/protocol/UsersService'
+import { Service } from './Service';
 
-
-const UserSerializer = (
-  from: User
-): UserScheme => ({
-  id: from.id.value,
-  name: from.name,
-  email: from.email,
-  roles: from.roleIds.map(x => ({id: x.value})),
-  status: from.status,
-  title: from.title,
-  department: from.department,
-  avatarUrl: from.avatarUrl
-})
-
-const UserDeserializer = (
-  from: UserScheme
-): User => new User(
-  new UuidIdentity(from.id),
-  from.name,
-  from.email,
-  from.roles.map(x => new UuidIdentity(x.id)) || [],
-  from.status,
-  from.title,
-  from.department,
-  from.avatarUrl
-)
-
-export class UsersService {
-  _usersRepository = new RestRepository<User, UserScheme>(
-    'http://localhost:3000/users', UserSerializer, UserDeserializer)
-
-  async getUser(userId: UserIdentity): Promise<User|undefined> {
-    return this._usersRepository.get(userId)
+export class UsersService extends Service {
+  async create(user: CreateUserRequest) {
+    return await this.post("http://localhost:3000/", user)
   }
 
-  async getTeamMembers(): Promise<readonly User[]> {
-    const response = await this._usersRepository.all()
-    return response.entities
+  async getOne(id: string): Promise<GetUserResponse> {
+    return await this.get(`http://localhost:3000/users/${id}`)
   }
 
-  async saveUser(user: User) {
-    await this._usersRepository.save(user)
+  async getAll(): Promise<GetUsersResponse> {
+    return await this.get("http://localhost:3000/users")
+  }
+
+  async update(id: string, request: UpdateUserRequest): Promise<UpdateUserResponse> {
+    return await this.patch(`http://localhost:3000/users/${id}`, request)
   }
 }

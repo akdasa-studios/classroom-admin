@@ -3,11 +3,11 @@
     :title="$t('org-roles-crud')"
     :description="$ta('org-roles-crud').header"
     :create-button-title="$ta('org-roles-crud').create"
-    @create-button-click="router.go('org-roles-edit', {id: 'new'})"
+    @create-button-click="router.go('org-roles-edit', { id: 'new' })"
   />
 
   <RolesTable 
-    :items="state.view"
+    :items="state"
     class="RolesTable"
     @click="r => router.go('org-roles-edit', { id: r.id })"
   />
@@ -15,23 +15,30 @@
 
 
 <script setup lang="ts">
-import { type Role } from '@classroom/core/aggregates'
-import { RolesTable } from '@classroom/org/components'
+import { useAsyncState } from '@vueuse/core'
 import { CrudTableHeader } from '@classroom/shared/components'
-import { useAppRouter, useListAsyncState } from '@classroom/shared/composables'
+import { useAppRouter } from '@classroom/shared/composables'
+import { RolesTable } from '@classroom/org/components'
 import { useRolesService } from '@classroom/org/composables'
-import { type Role as RoleViewModel } from '@classroom/org/components'
-import { roleToViewModel } from '@classroom/org/helpers'
+import { type Role } from '@classroom/org/components'
 
 // --- Dependencies ------------------------------------------------------------
 const router = useAppRouter()
 const rolesService = useRolesService()
 
 // --- State -------------------------------------------------------------------
-const { state } = useListAsyncState<Role, RoleViewModel>({
-  fetcher: () => rolesService.getAllRoles(),
-  mapper:  roleToViewModel, 
-})
+const { state } = useAsyncState<Role[]>(fetchData, [])
+
+// --- Helpers -----------------------------------------------------------------
+async function fetchData(): Promise<Role[]> {
+  const rolesResponse = await rolesService.getAll()
+  return rolesResponse.items.map(role => ({
+    id: role.id,
+    name: role.name,
+    description: role.description,
+    permissions: role.permissions,
+  }))
+}
 </script>
 
 

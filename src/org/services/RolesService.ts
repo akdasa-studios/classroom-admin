@@ -1,45 +1,20 @@
-import { RestRepository } from '@akd-studios/framework-persistence-rest/repository'
-import { UuidIdentity } from '@akd-studios/framework/domain'
-import { Role, type RoleIdentity } from '@classroom/core/aggregates'
+import type { GetRoleResponse, GetRolesResponse, CreateRoleRequest, UpdateRoleResponse, UpdateRoleRequest } from '@classroom/protocol/RolesService'
+import { Service } from './Service';
 
-
-type RoleScheme = Pick<
-  Role, 'name' | 'description' | 'permissions'
-> & { id: string }
-
-
-const RoleSerializer = (
-  from: Role
-): RoleScheme => ({
-  id: from.id.value,
-  name: from.name,
-  description: from.description,
-  permissions: from.permissions
-})
-
-const RoleDeserializer = (
-  from: RoleScheme
-): Role => new Role(
-  new UuidIdentity(from.id),
-  from.name,
-  from.description,
-  from.permissions
-)
-
-export class RolesService {
-  _rolesRepository = new RestRepository<Role, RoleScheme>(
-    'http://localhost:3000/roles', RoleSerializer, RoleDeserializer)
-
-  async getRole(roleId: RoleIdentity): Promise<Role> {
-    return this._rolesRepository.get(roleId)
+export class RolesService extends Service {
+  async create(role: CreateRoleRequest) {
+    return await this.post("http://localhost:3000/roles", role)
   }
 
-  async getAllRoles(): Promise<readonly Role[]> {
-    const response = await this._rolesRepository.all()
-    return response.entities
+  async getOne(id: string): Promise<GetRoleResponse> {
+    return await this.get(`http://localhost:3000/roles/${id}`)
   }
 
-  async saveRole(role: Role) {
-    await this._rolesRepository.save(role)
+  async getAll(): Promise<GetRolesResponse> {
+    return await this.get("http://localhost:3000/roles")
+  }
+
+  async update(id: string, request: UpdateRoleRequest): Promise<UpdateRoleResponse> {
+    return await this.patch(`http://localhost:3000/roles/${id}`, request)
   }
 }

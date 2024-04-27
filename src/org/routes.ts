@@ -1,5 +1,3 @@
-import { UuidIdentity } from '@akd-studios/framework/domain'
-import type { RoleIdentity } from '@classroom/core/aggregates'
 import type { RouteRecordRaw } from 'vue-router'
 
 export const routes: Array<RouteRecordRaw> = [
@@ -25,7 +23,7 @@ export const routes: Array<RouteRecordRaw> = [
     component: () => import('./pages/RolesCrudPage.vue'),
     props: route => ({
       roleId: route.params.id !== 'new'
-        ? new UuidIdentity(route.params.id as string) as RoleIdentity
+        ? route.params.id as string
         : undefined
     }),
     meta: {
