@@ -43,7 +43,7 @@ export const routes: Array<RouteRecordRaw> = [
     name: 'org-users-edit',
     component: () => import('./pages/UsersCrudPage.vue'),
     props: route => ({
-      roleId: route.params.id !== 'new'
+      userId: route.params.id !== 'new'
         ? route.params.id as string
         : undefined
     }),

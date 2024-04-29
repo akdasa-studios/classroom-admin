@@ -3,7 +3,7 @@ import { Service } from './Service';
 
 export class UsersService extends Service {
   async create(user: CreateUserRequest) {
-    return await this.post("http://localhost:3000/", user)
+    return await this.post("http://localhost:3000/users", user)
   }
 
   async getOne(id: string): Promise<GetUserResponse> {

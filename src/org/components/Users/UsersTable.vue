@@ -29,8 +29,9 @@
     </template>
 
     <TableRow
-      v-for="user in items"
+      v-for="user in users"
       :key="user.id"
+      @click="emit('click', user)"
     >
       <TableCell variant="first">
         <div class="UserCell">
@@ -55,7 +56,7 @@
 
       <TableCell align="center">
         <span class="text-dim">
-          {{ user.roles.join(", ") }}
+          {{ getRolesNames(user.roleIds).join(", ") }}
         </span>
       </TableCell>
 
@@ -71,16 +72,23 @@
 
 <script setup lang="ts">
 import { Avatar, Table, TableCell, TableRow, UserStatusBadge } from '@classroom/shared/components'
-import { type User } from './Models'
+import { type User, type Role } from './Models'
 
 // --- Interface ---------------------------------------------------------------
-defineProps<{
-  items: readonly User[]
+const props = defineProps<{
+  users: readonly User[]
+  roles: readonly Role[]
 }>()
 
 const emit = defineEmits<{
   click: [item: User]
 }>()
+
+// --- Helpers - ---------------------------------------------------------------
+function getRolesNames(roleIds: string[]): string[] {
+  return roleIds.map(x => props.roles.find(role => role.id === x)?.name || "") 
+}
+
 </script>
 
 

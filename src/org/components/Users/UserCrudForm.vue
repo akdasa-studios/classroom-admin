@@ -23,34 +23,27 @@
       />
     </div>
 
-    <!-- <template -->
-    <!--   v-for="group in permissionGroups" -->
-    <!--   :key="group.id" -->
-    <!-- > -->
-    <!--   <CrudFormSectionHeader -->
-    <!--     :title="group.name" -->
-    <!--     :description="group.description" -->
-    <!--   /> -->
-    <!---->
-    <!--   <CrudFormCheckbox -->
-    <!--     v-for="permission in group.permissions" -->
-    <!--     :key="permission.id" -->
-    <!--     :value="permission.id" -->
-    <!--     :title="permission.name" -->
-    <!--     :description="permission.description" -->
-    <!--     v-model="model.permissions" -->
-    <!--   /> -->
-    <!-- </template> -->
+    <CrudFormSectionHeader
+      title="Roles"
+      description="group.description"
+    />
+
+    <UserRolesSelector
+      :roles="roles"
+      v-model="model.roleIds"
+    />
   </CrudForm>
 </template>
 
 
 <script setup lang="ts">
-import { type User } from './Models'
-import { CrudForm, CrudFormTextInput } from '@classroom/shared/components'
+import { CrudForm, CrudFormTextInput, CrudFormSectionHeader } from '@classroom/shared/components'
+import { type User, type Role } from './Models'
+import UserRolesSelector from './UserRolesSelector.vue'
 
 // --- Interface ---------------------------------------------------------------
 defineProps<{
+  roles: Role[]
 }>()
 const model = defineModel<User>({ required: true })
 const emit = defineEmits<{

@@ -14,7 +14,7 @@ import { useAppRouter  } from '@classroom/shared/composables'
 import { PermissionGroups, Permissions } from '@classroom/shared/models'
 import { pick } from '@classroom/shared/utils'
 import { useRolesService } from '@classroom/org/composables'
-import { RoleCrudForm, EmptyRole, type Role } from '@classroom/org/components'
+import { RoleCrudForm, EmptyRole, type Role } from '@classroom/org/components/Roles'
 
 // --- Interface ---------------------------------------------------------------
 const props = defineProps<{

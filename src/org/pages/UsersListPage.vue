@@ -7,7 +7,8 @@
   />
 
   <UsersTable 
-    :items=users
+    :users=users
+    :roles=roles
     @click="onTableRowClicked"
   />
 </template>
@@ -17,7 +18,7 @@
 import { useAsyncState } from '@vueuse/core'
 import { useAppRouter  } from '@classroom/shared/composables'
 import { CrudTableHeader } from '@classroom/shared/components'
-import { type User } from '@classroom/org/components'
+import { type User, type Role } from '@classroom/org/components/Users'
 import { UsersTable } from '@classroom/org/components'
 import { useRolesService, useUsersService } from '@classroom/org/composables'
 
@@ -27,7 +28,8 @@ const rolesService = useRolesService()
 const router = useAppRouter()
 
 // --- State -------------------------------------------------------------------
-const { state: users } = useAsyncState<User[]>(fetchData, [])
+const { state: users } = useAsyncState<User[]>(usersService.getAll().then(x => x.items), [])
+const { state: roles } = useAsyncState<Role[]>(rolesService.getAll().then(x => x.items), [])
 
 // --- Handlers ----------------------------------------------------------------
 function onTableRowClicked(user: User) {
@@ -36,27 +38,6 @@ function onTableRowClicked(user: User) {
 
 function onCreateButtonClicked() {
   router.go('org-users-edit', { id: 'new' })
-}
-
-// --- Helpers -----------------------------------------------------------------
-async function fetchData(): Promise<User[]> {
-  const [
-    usersResponse,
-    rolesResponse,
-  ] = await Promise.all([
-    usersService.getAll(),
-    rolesService.getAll(),
-  ])
-  return usersResponse.items.map(user => ({
-    id: user.id,
-    name: user.name,
-    email: user.email,
-    title: user.title,
-    department: user.department,
-    status: user.status,
-    roles: user.roles.map(roleId => rolesResponse.items.find(role => role.id === roleId)?.name || ""),
-    avatarUrl: user.avatarUrl || "https://placekitten.com/200/300"
-  }))
 }
 </script>
 

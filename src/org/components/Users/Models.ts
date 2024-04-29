@@ -5,8 +5,14 @@ export type User = {
   title?: string
   department?: string
   status: 'invited' | 'active' | 'inactive'
-  roles: string[]
+  roleIds: string[]
   avatarUrl?: string
+}
+
+export type Role = {
+  id: string
+  name: string
+  description: string
 }
 
 export const EmptyUser: User = {
@@ -16,7 +22,7 @@ export const EmptyUser: User = {
   title: "",
   department: "",
   status: "inactive",
-  roles: [],
+  roleIds: [],
   avatarUrl: "",
 } 
 
