@@ -6,11 +6,11 @@
           :header="true"
           variant="first"
         >
-          {{ $ta('org-roles-table').name }}
+          {{ textRoleColumnHeader }}
         </TableCell>
 
         <TableCell :header="true">
-          {{ $ta('org-roles-table').description }}
+          {{ textDescriptionColumnHeader }}
         </TableCell>
       </TableRow>
     </template>
@@ -39,7 +39,9 @@ import { type Role } from './Models'
 
 // --- Interface ---------------------------------------------------------------
 defineProps<{
-  items: readonly Role[]
+  items: readonly Role[],
+  textRoleColumnHeader: string,
+  textDescriptionColumnHeader: string
 }>()
 
 const emit = defineEmits<{

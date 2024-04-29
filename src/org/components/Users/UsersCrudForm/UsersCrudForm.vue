@@ -1,31 +1,31 @@
 <template>
   <CrudForm
-    :title="$t('org-users-crud')"
-    :description="$ta('org-users-crud').header"
+    :title="textHeader.title"
+    :description="textHeader.description"
     @save="emit('save')"
   >
     <CrudFormTextInput
       v-model="model.name"
-      :label="$ta('org-users-crud').name"
+      :label="textFields.name"
     />
     <CrudFormTextInput
       v-model="model.email"
-      :label="$ta('org-users-crud').email"
+      :label="textFields.email"
     />
     <div class="columns">
       <CrudFormTextInput
         v-model="model.department"
-        :label="$ta('org-users-crud').department"
+        :label="textFields.department"
       />
       <CrudFormTextInput
         v-model="model.title"
-        :label="$ta('org-users-crud').title"
+        :label="textFields.title"
       />
     </div>
 
     <CrudFormSectionHeader
-      title="Roles"
-      description="group.description"
+      :title="textFields.roles"
+      description=""
     />
 
     <UserRolesSelector
@@ -38,12 +38,14 @@
 
 <script setup lang="ts">
 import { CrudForm, CrudFormTextInput, CrudFormSectionHeader } from '@classroom/shared/components'
-import { type User, type Role } from './Models'
-import UserRolesSelector from './UserRolesSelector.vue'
+import type { User, Role, FormHeader, FormFields } from './Models'
+import UserRolesSelector from './UsersRolesSelector.vue'
 
 // --- Interface ---------------------------------------------------------------
 defineProps<{
   roles: Role[]
+  textHeader: FormHeader
+  textFields: FormFields
 }>()
 const model = defineModel<User>({ required: true })
 const emit = defineEmits<{

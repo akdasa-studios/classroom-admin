@@ -1,16 +1,16 @@
 <template>
   <CrudForm
-    :title="$t('org-roles-crud')"
-    :description="$ta('org-roles-crud').header"
+    :title="textHeaderTitle"
+    :description="textHeaderDescription"
     @save="emit('save')"
   >
     <CrudFormTextInput
       v-model="model.name"
-      :label="$ta('org-roles-crud').name"
+      :label="textName"
     />
     <CrudFormTextareaInput
       v-model="model.description"
-      :label="$ta('org-roles-crud').description"
+      :label="textDescription"
     />
 
     <template
@@ -42,6 +42,10 @@ import { CrudForm, CrudFormCheckbox, CrudFormSectionHeader, CrudFormTextInput, C
 // --- Interface ---------------------------------------------------------------
 defineProps<{
   permissionGroups: PermissionsGroup[]
+  textHeaderTitle: string
+  textHeaderDescription: string
+  textName: string
+  textDescription: string
 }>()
 const model = defineModel<Role>({ required: true })
 const emit = defineEmits<{

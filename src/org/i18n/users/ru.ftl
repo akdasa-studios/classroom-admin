@@ -5,6 +5,7 @@ org-users-crud = Пользователи
   .title       = Должность
   .department  = Департамент 
   .email       = EMail
+  .roles       = Роли
 
 org-users-table = Пользователи
   .name         = Имя

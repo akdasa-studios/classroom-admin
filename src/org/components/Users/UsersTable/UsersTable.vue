@@ -6,24 +6,24 @@
           variant="first"
           :header="true"
         >
-          {{ $ta('org-users-table').name }}
+          {{ textColumnNames.name }}
         </TableCell>
 
         <TableCell :header="true">
-          {{ $ta('org-users-table').title }}
+          {{ textColumnNames.title }}
         </TableCell>
 
         <TableCell
           :header="true"
           align="center"
         >
-          {{ $ta('org-users-table').roles }}
+          {{ textColumnNames.roles }}
         </TableCell>
         <TableCell
           align="center"
           :header="true"
         >
-          {{ $ta('org-users-table').status }}
+          {{ textColumnNames.status }}
         </TableCell>
       </TableRow>
     </template>
@@ -56,13 +56,13 @@
 
       <TableCell align="center">
         <span class="text-dim">
-          {{ getRolesNames(user.roleIds).join(", ") }}
+          {{ user.roles.join(", ") }}
         </span>
       </TableCell>
 
       <TableCell align="center">
-        <UserStatusBadge :variant="user.status">
-          {{ $ta("org-users-status")[user.status] }}
+        <UserStatusBadge :variant="user.statusType">
+          {{ user.statusText }}
         </UserStatusBadge>
       </TableCell>
     </TableRow>
@@ -72,23 +72,17 @@
 
 <script setup lang="ts">
 import { Avatar, Table, TableCell, TableRow, UserStatusBadge } from '@classroom/shared/components'
-import { type User, type Role } from './Models'
+import type { User, ColumnNames } from './Models'
 
 // --- Interface ---------------------------------------------------------------
-const props = defineProps<{
+defineProps<{
   users: readonly User[]
-  roles: readonly Role[]
+  textColumnNames: ColumnNames
 }>()
 
 const emit = defineEmits<{
   click: [item: User]
 }>()
-
-// --- Helpers - ---------------------------------------------------------------
-function getRolesNames(roleIds: string[]): string[] {
-  return roleIds.map(x => props.roles.find(role => role.id === x)?.name || "") 
-}
-
 </script>
 
 

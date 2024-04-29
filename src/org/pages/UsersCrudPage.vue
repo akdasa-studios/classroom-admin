@@ -2,6 +2,17 @@
   <UserCrudForm
     v-model="user"
     :roles="roles"
+    :text-header="{
+      title:       $t('org-users-crud'),
+      description: $ta('org-users-crud').header,
+    }"
+    :text-fields="{
+      name:       $ta('org-users-crud').name,
+      email:      $ta('org-users-crud').email,
+      department: $ta('org-users-crud').department,
+      title:      $ta('org-users-crud').title,
+      roles:      $ta('org-users-crud').roles,
+    }"
     @save="onSave"
   />
 </template>
@@ -13,7 +24,7 @@ import { useAsyncState } from '@vueuse/core'
 import { useAppRouter  } from '@classroom/shared/composables'
 import { pick } from '@classroom/shared/utils'
 import { useRolesService, useUsersService } from '@classroom/org/composables'
-import { UserCrudForm, EmptyUser, type User, type Role } from '@classroom/org/components/Users'
+import { UserCrudForm, EmptyUser, type User, type Role } from '@classroom/org/components/Users/UsersCrudForm'
 
 // --- Interface ---------------------------------------------------------------
 const props = defineProps<{

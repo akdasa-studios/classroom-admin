@@ -2,6 +2,10 @@
   <RoleCrudForm
     v-model="state"
     :permission-groups="getPermissions()"
+    :text-header-title="$t('org-roles-crud')"
+    :text-header-description="$ta('org-roles-crud').header"
+    :text-name="$ta('org-roles-crud').name"
+    :text-description="$ta('org-roles-crud').description"
     @save="onSave"
   />
 </template>

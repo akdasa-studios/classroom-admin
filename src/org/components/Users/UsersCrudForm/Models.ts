@@ -1,3 +1,5 @@
+// --- Interface ---------------------------------------------------------------
+
 export type User = {
   id: string
   name: string
@@ -26,3 +28,20 @@ export const EmptyUser: User = {
   avatarUrl: "",
 } 
 
+
+// --- Appearence --------------------------------------------------------------
+
+export type FormHeader = {
+  title: string,
+  description: string,
+}
+
+export type FormFields = {
+  name: string,
+  email: string,
+  department: string,
+  title: string,
+  roles: string,
+}
+
+  

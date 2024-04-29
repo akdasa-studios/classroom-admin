@@ -3,6 +3,9 @@ org-users-crud = Users
   .create      = Add
   .name        = Name
   .title       = Title
+  .department  = Департамент 
+  .email       = EMail
+  .roles       = Roles
 
 org-users-table = Users
   .name         = Role

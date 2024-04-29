@@ -8,6 +8,8 @@
 
   <RolesTable 
     :items="state"
+    :text-role-column-header="$ta('org-roles-table').name"
+    :text-description-column-header="$ta('org-roles-table').description"
     class="RolesTable"
     @click="r => router.go('org-roles-edit', { id: r.id })"
   />
@@ -18,9 +20,8 @@
 import { useAsyncState } from '@vueuse/core'
 import { CrudTableHeader } from '@classroom/shared/components'
 import { useAppRouter } from '@classroom/shared/composables'
-import { RolesTable } from '@classroom/org/components'
 import { useRolesService } from '@classroom/org/composables'
-import { type Role } from '@classroom/org/components'
+import { type Role, RolesTable } from '@classroom/org/components/Roles'
 
 // --- Dependencies ------------------------------------------------------------
 const router = useAppRouter()
