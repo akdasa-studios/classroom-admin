@@ -1,5 +1,5 @@
 import type { GetRoleResponse, GetRolesResponse, CreateRoleRequest, UpdateRoleResponse, UpdateRoleRequest } from '@classroom/protocol/RolesService'
-import { Service } from './Service';
+import { Service } from '@classroom/shared/services'
 
 export class RolesService extends Service {
   async create(role: CreateRoleRequest) {

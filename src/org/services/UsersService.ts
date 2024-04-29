@@ -1,5 +1,5 @@
 import type { GetUserResponse, GetUsersResponse, CreateUserRequest, UpdateUserResponse, UpdateUserRequest } from '@classroom/protocol/UsersService'
-import { Service } from './Service';
+import { Service } from '@classroom/shared/services'
 
 export class UsersService extends Service {
   async create(user: CreateUserRequest) {

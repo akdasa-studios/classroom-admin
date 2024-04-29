@@ -30,7 +30,7 @@
 
     <SidebarMenuList :title="$t('sidebar-edu')">
       <SidebarMenuItem
-        :link="{'name': 'org-users'}"
+        :link="{'name': 'education-courses'}"
         :icon="AcademicCapIcon"
         :title="$t('sidebar-edu-courses')"
         variant="inactive"
