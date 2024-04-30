@@ -6,6 +6,11 @@ export type Course = {
   coverImageUrl: string
 }
 
+export const EmptyCourse = (): Course => ({
+  id: "", title: "", subtitle: "", description: "",
+  coverImageUrl: ""
+})
+
 // --- Interface ---------------------------------------------------------------
 export type TableHeaders = {
   title: string

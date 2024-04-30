@@ -1,7 +1,4 @@
 <template>
-  {{ items }}
-
-  {{ tableHeaders }}
   <Table class="CrudTable">
     <template #head>
       <TableRow>

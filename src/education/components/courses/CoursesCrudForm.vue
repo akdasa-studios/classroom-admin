@@ -1,53 +1,50 @@
 <template>
   <CrudForm
-    :title="textHeaderTitle"
-    :description="textHeaderDescription"
+    :title="i18n.header.title"
+    :description="i18n.header.description"
     @save="emit('save')"
   >
     <CrudFormTextInput
-      v-model="model.name"
-      :label="textName"
+      v-model="model.title"
+      :label="i18n.fields.title"
+    />
+    <CrudFormTextInput
+      v-model="model.subtitle"
+      :label="i18n.fields.subtitle"
     />
     <CrudFormTextareaInput
       v-model="model.description"
-      :label="textDescription"
+      :label="i18n.fields.description"
     />
-
-    <template
-      v-for="group in permissionGroups"
-      :key="group.id"
-    >
-      <CrudFormSectionHeader
-        :title="group.name"
-        :description="group.description"
-      />
-
-      <CrudFormCheckbox
-        v-for="permission in group.permissions"
-        :key="permission.id"
-        :value="permission.id"
-        :title="permission.name"
-        :description="permission.description"
-        v-model="model.permissions"
-      />
-    </template>
+    <CrudFormFileInput
+      v-model="model.coverImageUrl"
+      :label="i18n.fields.coverImage"
+      text="Drop here"
+    />
   </CrudForm>
 </template>
 
 
 <script setup lang="ts">
-import { type PermissionsGroup, type Role } from './Models'
-import { CrudForm, CrudFormCheckbox, CrudFormSectionHeader, CrudFormTextInput, CrudFormTextareaInput } from '@classroom/shared/components'
+import { type Course } from './models'
+import { CrudForm, CrudFormTextInput, CrudFormFileInput, CrudFormTextareaInput } from '@classroom/shared/components'
 
 // --- Interface ---------------------------------------------------------------
 defineProps<{
-  permissionGroups: PermissionsGroup[]
-  textHeaderTitle: string
-  textHeaderDescription: string
-  textName: string
-  textDescription: string
+  i18n: {
+    fields: { 
+      title: string 
+      subtitle: string
+      description: string
+      coverImage: string
+    }
+    header: {
+      title: string
+      description: string
+    }
+  }
 }>()
-const model = defineModel<Role>({ required: true })
+const model = defineModel<Course>({ required: true })
 const emit = defineEmits<{
   save: [void]
 }>()

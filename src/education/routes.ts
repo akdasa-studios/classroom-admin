@@ -14,7 +14,7 @@ export const routes: Array<RouteRecordRaw> = [
     name: 'education-courses-edit',
     component: () => import('./pages/CoursesCrudPage.vue'),
     props: route => ({
-      roleId: route.params.id !== 'new'
+      courseId: route.params.id !== 'new'
         ? route.params.id as string
         : undefined
     }),

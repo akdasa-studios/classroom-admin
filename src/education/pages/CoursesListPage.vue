@@ -1,7 +1,7 @@
 <template>
   <CrudTableHeader
-    :title="$t('courses-title')"
-    :description="$t('courses-description')"
+    :title="$t('courses-crud-title')"
+    :description="$t('courses-crud-description')"
     :create-button-title="$t('create')"
     @create-button-click="router.go('education-courses-edit', { id: 'new' })"
   />
@@ -9,8 +9,8 @@
   <CoursesTable 
     :items="courses"
     :table-headers="{
-      title: $t('courses-list-name'),
-      description: $t('courses-list-description'),
+      title: $t('courses-title'),
+      description: $t('courses-description'),
     }"
     class="CoursesTable"
     @click="r => router.go('education-courses-edit', { id: r.id })"

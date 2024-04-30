@@ -4,19 +4,19 @@
       variant="destructive"
       @click="onDeleteButtonClicked"
     >
-      {{ $t('crud-delete') }}
+      {{ $t('delete') }}
     </Button>
     <div class="grow" />
     <Button
       variant="ghost"
       @click="onCancelButtonClicked"
     >
-      {{ $t('crud-cancel') }}
+      {{ $t('cancel') }}
     </Button>
     <Button
       @click="onSaveButtonClicked"
     >
-      {{ $t('crud-save') }}
+      {{ $t('save') }}
     </Button>
   </div>
 </template>
