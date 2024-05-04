@@ -14,6 +14,12 @@ export class Color {
 
   }
 
+  invert() {
+    return new Color(
+      (this.h + 180) % 360, this.s, this.l, this.a
+    );
+  }
+
   darken(percent: number) {
     return new Color(
       this.h, this.s, this.l - this.l * percent, this.a

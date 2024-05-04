@@ -17,4 +17,8 @@ export class UsersService extends Service {
   async update(id: string, request: UpdateUserRequest): Promise<UpdateUserResponse> {
     return await this.patch(`http://localhost:3000/users/${id}`, request)
   }
+
+  async find(query: string): Promise<GetUsersResponse> {
+    return await this.get("http://localhost:3000/users", { query })
+  }
 }

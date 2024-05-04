@@ -1,6 +1,13 @@
 export abstract class Service {
-  protected async get<TResponse>(url: string) {
-    const response = await fetch(url, {
+  protected async get<TResponse>(
+    url: string, 
+    queryParams: { [key: string]: string } | undefined = undefined
+  ) {
+    const finalUrl = queryParams 
+      ? url + "?" + new URLSearchParams(queryParams)
+      : url
+
+    const response = await fetch(finalUrl, {
       headers: { 'accept': 'application/json' }
     })
     if (response.ok) {

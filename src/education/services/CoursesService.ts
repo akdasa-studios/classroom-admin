@@ -17,4 +17,8 @@ export class CoursesService extends Service {
   async update(id: string, request: UpdateCourseRequest): Promise<UpdateCourseResponse> {
     return await this.patch(`http://localhost:3000/courses/${id}`, request)
   }
+
+  async find(query: string): Promise<GetCoursesResponse> {
+    return await this.get("http://localhost:3000/courses", { query })
+  }
 }

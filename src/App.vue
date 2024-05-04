@@ -16,8 +16,6 @@ import { SidebarAndMainBlockLayout } from '@classroom/shared/layouts'
 import { RouterView } from 'vue-router'
 import { useTheme } from './shared/composables'
 
-
-
 /* -------------------------------------------------------------------------- */
 /*                                Dependencies                                */
 /* -------------------------------------------------------------------------- */

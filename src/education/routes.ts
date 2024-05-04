@@ -22,4 +22,25 @@ export const routes: Array<RouteRecordRaw> = [
       breadcrumbs: ['education', 'education-courses', 'education-courses-edit']
     }
   },
+  {
+    path: '/education/groups',
+    name: 'education-groups',
+    component: () => import('./pages/GroupsListPage.vue'),
+    meta: {
+      breadcrumbs: ['education', 'education-groups']
+    }
+  },
+  {
+    path: '/education/groups/:id',
+    name: 'education-groups-edit',
+    component: () => import('./pages/GroupsCrudPage.vue'),
+    props: route => ({
+      groupId: route.params.id !== 'new'
+        ? route.params.id as string
+        : undefined
+    }),
+    meta: {
+      breadcrumbs: ['education', 'education-groups', 'education-groups-edit']
+    }
+  },
 ]

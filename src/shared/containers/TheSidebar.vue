@@ -33,14 +33,14 @@
         :link="{'name': 'education-courses'}"
         :icon="AcademicCapIcon"
         :title="$t('sidebar-edu-courses')"
-        variant="inactive"
+        :variant="getItemVariant('education-courses')"
       />
 
       <SidebarMenuItem
-        :link="{'name': 'org-users'}"
+        :link="{'name': 'education-groups'}"
         :icon="UserGroupIcon"
         :title="$t('sidebar-edu-classes')"
-        variant="inactive"
+        :variant="getItemVariant('education-groups')"
       />
 
       <SidebarMenuItem
