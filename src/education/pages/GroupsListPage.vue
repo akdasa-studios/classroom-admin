@@ -10,7 +10,7 @@
     :items="groups"
     :i18n="{
       headers: {
-        name: $t('groups-name'),
+        name: $t('groups-title'),
         description: $t('groups-description'),
       }
     }"

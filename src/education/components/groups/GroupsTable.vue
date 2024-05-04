@@ -21,9 +21,14 @@
       @click="emit('click', item)"
     >
       <TableCell variant="first">
-        {{ item.name }}
-        {{ item.courseName }}
-        {{ item.leaderName }}
+        <div>
+          <div class="name">
+            {{ item.name }}
+          </div>
+          <div class="color-text-500">
+            {{ item.leaderName }} :: {{ item.courseName }}
+          </div>
+        </div>
       </TableCell>
       <TableCell 
         class="color-text-500" 
@@ -65,3 +70,13 @@ const emit = defineEmits<{
 }>()
 </script>
 
+
+<style scoped>
+.name {
+  font-weight: 600;
+}
+
+.text-dim {
+  color: var(--color-text-500);
+}
+</style>

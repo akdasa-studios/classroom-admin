@@ -16,6 +16,7 @@
     "@headlessui/vue": "^1.7.17",
     "@heroicons/vue": "^2.1.1",
     "@vueuse/core": "^10.9.0",
+    "chrono-node": "^2.7.5",
     "fluent-vue": "^3.5.0",
     "unplugin-fluent-vue": "^1.1.4",
     "uuid": "^9.0.1",

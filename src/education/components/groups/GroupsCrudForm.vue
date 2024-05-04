@@ -24,7 +24,7 @@
       v-model="model.description"
       :label="i18n.fields.description"
     />
-    <CrudFormTextInput
+    <CrudFormDateTimePicker
       v-model="model.startsAt"
       :label="i18n.fields.startsAt"
     />
@@ -46,7 +46,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { watchDebounced } from '@vueuse/core'
-import { CrudForm, CrudFormTextInput, CrudFormTextareaInput, CrudFormCombobox, CrudFormComboboxListItem } from '@classroom/shared/components'
+import { CrudForm, CrudFormTextInput, CrudFormTextareaInput, CrudFormCombobox, CrudFormComboboxListItem, CrudFormDateTimePicker } from '@classroom/shared/components'
 
 // --- Models ------------------------------------------------------------------
 export type Group = {
