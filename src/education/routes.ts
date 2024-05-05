@@ -43,4 +43,18 @@ export const routes: Array<RouteRecordRaw> = [
       breadcrumbs: ['education', 'education-groups', 'education-groups-edit']
     }
   },
+  {
+    path: '/education/enrollments',
+    name: 'education-enrollments',
+    component: () => import('./pages/EnrollmentsListPage.vue'),
+    meta: {
+      breadcrumbs: ['education', 'education-enrollments']
+    }
+  },
+  {
+    path: '/education/enrollments/:id',
+    name: 'education-enrollments-edit',
+    component: () => import('./pages/EnrollmentsCrudPage.vue'),
+    props: route => ({ enrollmentId: route.params.id as string }),
+  },
 ]

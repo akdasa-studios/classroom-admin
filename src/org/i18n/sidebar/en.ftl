@@ -15,6 +15,7 @@ sidebar-edu = School
 sidebar-edu-courses = Courses
 sidebar-edu-classes = Classes
 sidebar-edu-students = Students
+sidebar-edu-enrollments = Enrollments
 sidebar-edu-homework = Homework
 
 # ---------------------------------------------------------------------------- #

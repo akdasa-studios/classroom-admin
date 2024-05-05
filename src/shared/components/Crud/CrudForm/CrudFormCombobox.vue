@@ -45,11 +45,11 @@ const props = defineProps<{
 // --- State -------------------------------------------------------------------
 const value = defineModel<string>({ required: true })
 const query = defineModel<string>('query')
-const selectedQuery = ref("")
+const selectedQuery = ref("{nothing-selected}")
 const isDropdownOpen = ref(false)
 const { items } = toRefs(props)
 
-watch(items, () => isDropdownOpen.value = selectedQuery.value != query.value)
+watch(items, () => isDropdownOpen.value = selectedQuery.value != query.value)// || items.value.length !== 0)
 
 // --- Handlers ----------------------------------------------------------------
 function onItemClicked(id: string, label: string) {

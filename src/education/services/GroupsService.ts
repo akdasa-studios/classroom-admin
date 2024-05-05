@@ -17,4 +17,8 @@ export class GroupsService extends Service {
   async update(id: string, request: UpdateGroupRequest): Promise<UpdateGroupResponse> {
     return await this.patch(`http://localhost:3000/groups/${id}`, request)
   }
+
+  async findByNameAndCourse(query: string, courseId: string): Promise<GetGroupsResponse> {
+    return await this.get("http://localhost:3000/groups", { query, courseId })
+  }
 }

@@ -8,7 +8,7 @@
 
   <UsersTable 
     :users="users"
-    :text-column-names="{
+    :column-names="{
       name:   $ta('org-users-table').name,
       title:  $ta('org-users-table').title,
       roles:  $ta('org-users-table').roles,
@@ -56,9 +56,11 @@ async function fetchUsers(): Promise<User[]> {
   ])
   return usersResponse.items.map(user => ({
     ...user,
-    statusType: user.status,
-    avatarUrl:  user.avatarUrl,
-    statusText: fluent.$ta("org-users-status")[user.status],
+    status: {
+      type: user.status,
+      text: fluent.$ta("org-users-status")[user.status],
+    },
+    avatarUrl:  user.avatarUrl || "https://a0.anyrgb.com/pngimg/1236/14/no-facial-features-no-avatar-no-eyes-expressionless-avatar-icon-delayering-avatar-user-avatar-men-head-portrait-thumbnail.png",
     roles:      user.roleIds.map(
                   roleId => 
                     rolesResponse.items.find(
@@ -66,7 +68,6 @@ async function fetchUsers(): Promise<User[]> {
                     )?.name || ""
                   )
   }))
-
 }
 </script>
 

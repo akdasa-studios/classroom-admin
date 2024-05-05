@@ -9,7 +9,10 @@
       </p>
     </div>
 
-    <Button @click="emit('createButtonClick')">
+    <Button 
+      v-if="createButtonTitle"
+      @click="emit('createButtonClick')"
+    >
       {{ createButtonTitle }}
     </Button>
   </div>
@@ -22,7 +25,7 @@ import { Button } from '@classroom/shared/components'
 defineProps<{
   title: string,
   description: string,
-  createButtonTitle: string
+  createButtonTitle?: string
 }>()
 
 const emit = defineEmits<{

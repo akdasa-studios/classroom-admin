@@ -4,19 +4,19 @@
       variant="destructive"
       @click="onDeleteButtonClicked"
     >
-      {{ $t('delete') }}
+      {{ buttonsText?.delete ?? $t('delete') }}
     </Button>
     <div class="grow" />
     <Button
       variant="ghost"
       @click="onCancelButtonClicked"
     >
-      {{ $t('cancel') }}
+      {{ buttonsText?.cancel ?? $t('cancel') }}
     </Button>
     <Button
       @click="onSaveButtonClicked"
     >
-      {{ $t('save') }}
+      {{ buttonsText?.save ?? $t('save') }}
     </Button>
   </div>
 </template>
@@ -24,9 +24,16 @@
 <script setup lang="ts">
 import { Button } from '@classroom/shared/components'
 
-/* -------------------------------------------------------------------------- */
-/*                                  Interface                                 */
-/* -------------------------------------------------------------------------- */
+// --- Models ------------------------------------------------------------------
+export type CrudFormActionButtonsText = {
+  save?: string,
+  cancel?: string,
+  delete?: string,
+}
+
+defineProps<{
+  buttonsText?: CrudFormActionButtonsText
+}>()
 
 const emit = defineEmits<{
   save: [],

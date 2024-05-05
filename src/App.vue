@@ -4,14 +4,14 @@
       <TheSidebar />
     </template>
 
-    <TheBreadcrumbs />
+    <!-- <TheBreadcrumbs /> -->
     <RouterView />
   </SidebarAndMainBlockLayout>
 </template>
 
 
 <script setup lang="ts">
-import { TheBreadcrumbs, TheSidebar } from '@classroom/shared/containers'
+import { TheSidebar } from '@classroom/shared/containers'
 import { SidebarAndMainBlockLayout } from '@classroom/shared/layouts'
 import { RouterView } from 'vue-router'
 import { useTheme } from './shared/composables'

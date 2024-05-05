@@ -44,10 +44,10 @@
       />
 
       <SidebarMenuItem
-        :link="{'name': 'org-users'}"
+        :link="{'name': 'education-enrollments'}"
         :icon="UsersIcon"
-        :title="$t('sidebar-edu-students')"
-        variant="inactive"
+        :title="$t('sidebar-edu-enrollments')"
+        :variant="getItemVariant('education-enrollments')"
       />
 
       <SidebarMenuItem

@@ -6,19 +6,9 @@
           variant="first"
           :header="true"
         >
-          {{ columnNames.name }}
+          {{ columnNames.student }}
         </TableCell>
 
-        <TableCell :header="true">
-          {{ columnNames.title }}
-        </TableCell>
-
-        <TableCell
-          :header="true"
-          align="center"
-        >
-          {{ columnNames.roles }}
-        </TableCell>
         <TableCell
           align="center"
           :header="true"
@@ -29,41 +19,29 @@
     </template>
 
     <TableRow
-      v-for="user in users"
-      :key="user.id"
-      @click="emit('click', user)"
+      v-for="enrollment in enrollments"
+      :key="enrollment.id"
+      @click="emit('click', enrollment)"
     >
-      <TableCell variant="first">
+      <TableCell align="left">
         <div class="UserCell">
-          <Avatar :url="user.avatarUrl" />
+          <Avatar :url="enrollment.applicant.avatarUrl" />
           <div class="info">
             <div class="name">
-              {{ user.name }}
+              {{ enrollment.applicant.name }}
             </div>
             <div class="text-dim">
-              {{ user.email }}
+              {{ enrollment.group?.name }}
+              {{ enrollment.course.title }}
             </div>
           </div>
         </div>
       </TableCell>
 
-      <TableCell>
-        <div>{{ user.title }}</div>
-        <div class="text-dim">
-          {{ user.department }}
-        </div>
-      </TableCell>
-
       <TableCell align="center">
-        <span class="text-dim">
-          {{ user.roles.join(", ") }}
-        </span>
-      </TableCell>
-
-      <TableCell align="center">
-        <UserStatusBadge :variant="user.status.type">
-          {{ user.status.text }}
-        </UserStatusBadge>
+        <EnrollmentsStatusBadge :variant="enrollment.status.type">
+          {{ enrollment.status.text }}
+        </EnrollmentsStatusBadge>
       </TableCell>
     </TableRow>
   </Table>
@@ -71,38 +49,34 @@
 
 
 <script setup lang="ts">
-import { Avatar, Table, TableCell, TableRow, UserStatusBadge } from '@classroom/shared/components'
+import { Avatar, Table, TableCell, TableRow } from '@classroom/shared/components'
+import EnrollmentsStatusBadge from './EnrollmentsStatusBadge.vue'
 
 // --- Models ------------------------------------------------------------------
-export type User = {
+export type Enrollment = {
   id: string
-  name: string
-  email: string
-  title?: string
-  department?: string
-  roles: string[]
-  avatarUrl: string
+  applicant: { id: string, name: string, avatarUrl: string, }
+  group: { id: string, name: string }
+  course: { id: string, title: string }
   status: { 
-    type: 'invited' | 'active' | 'inactive'
+    type: 'new' | 'approved' | 'declined' | 'graduated'
     text: string
   }
 }
 
 export type ColumnNames = {
-  name: string,
-  title: string,
-  roles: string,
+  student: string,
   status: string
 }
 
 // --- Interface ---------------------------------------------------------------
 defineProps<{
-  users: User[]
+  enrollments: Enrollment[]
   columnNames: ColumnNames
 }>()
 
 const emit = defineEmits<{
-  click: [item: User]
+  click: [item: Enrollment]
 }>()
 </script>
 

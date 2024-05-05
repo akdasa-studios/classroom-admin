@@ -8,6 +8,7 @@
   <slot />
 
   <CrudFormActionButtons
+    :buttons-text="actionButtonsText"
     @save="onSaveButtonClicked"
     @cancel="onCancelButtonClicked"
     @delete="onDeleteButtonClicked"
@@ -16,7 +17,7 @@
 
 
 <script setup lang="ts">
-import { CrudFormActionButtons } from '@classroom/shared/components'
+import { CrudFormActionButtons, CrudFormActionButtonsText } from '@classroom/shared/components'
 
 /* -------------------------------------------------------------------------- */
 /*                                  Interface                                 */
@@ -25,6 +26,7 @@ import { CrudFormActionButtons } from '@classroom/shared/components'
 defineProps<{
   title: string,
   description: string
+  actionButtonsText?: CrudFormActionButtonsText
 }>()
 
 const emit = defineEmits<{

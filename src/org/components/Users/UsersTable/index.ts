@@ -1,2 +1,1 @@
-export * from './Models'
-export { default as UsersTable } from './UsersTable.vue'
+export { default as UsersTable, type User } from './UsersTable.vue'

@@ -20,7 +20,7 @@ import { GroupsCrudForm, type Group } from '@classroom/education/components/grou
 
 // --- Models ------------------------------------------------------------------
 const EmptyGroup: Group = {
-  name: "", description: "", startsAt: 0,
+  name: "", description: "", startsAt: new Date(),
   leader: { id: "", name: "" }, course: { id: "", title: "" }
 }
 
@@ -49,7 +49,7 @@ async function onSave() {
     description: group.value.description,
     leaderId: group.value.leader.id,
     courseId: group.value.course.id,
-    startsAt: group.value.startsAt,
+    startsAt: group.value.startsAt.toISOString(),
   }
   await (!props.groupId 
     ? groupsService.create(payload)
@@ -62,11 +62,11 @@ async function fetchData(groupId: string): Promise<Group> {
   const groupsResponse = await groupsService.getOne(groupId)
   const leaderResponse = await usersService.getOne(groupsResponse.leaderId)
   const courseResponse = await coursesService.getOne(groupsResponse.courseId)
-  console.log(leaderResponse, courseResponse)
   return { 
     ...groupsResponse,
     leader: { id: leaderResponse.id, name: leaderResponse.name },
     course: { id: courseResponse.id, title: courseResponse.title },
+    startsAt: new Date(groupsResponse.startsAt)
   };
 }
 

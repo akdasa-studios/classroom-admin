@@ -15,6 +15,7 @@ sidebar-edu = Образование
 sidebar-edu-courses = Курсы
 sidebar-edu-classes = Классы
 sidebar-edu-students = Ученики
+sidebar-edu-enrollments = Заявки
 sidebar-edu-homework = Домашние задания
 
 # ---------------------------------------------------------------------------- #
