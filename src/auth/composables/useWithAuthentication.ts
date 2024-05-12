@@ -7,6 +7,7 @@ export function useWithAuthentication<T extends Service>(
 ): T {
   const authService = useAuthService()
   const config = useConfig()
+  service.baseUrl = config.baseUrl.value
   service.interceptions.push(
     {
       onRequest: () => ({
