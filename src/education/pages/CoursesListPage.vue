@@ -6,7 +6,7 @@
     @create-button-click="router.go('education-courses-edit', { id: 'new' })"
   />
 
-  <CoursesTable 
+  <CoursesTable
     :items="courses"
     :table-headers="{
       title: $t('courses-title'),
@@ -22,12 +22,13 @@
 import { useAsyncState } from '@vueuse/core'
 import { CrudTableHeader } from '@classroom/shared/components'
 import { useAppRouter } from '@classroom/shared/composables'
+import { useWithAuthentication } from '@classroom/auth/composables'
 import { useCoursesService } from '@classroom/education/composables'
 import { type Course, CoursesTable } from '@classroom/education/components/courses'
 
 // --- Dependencies ------------------------------------------------------------
 const router = useAppRouter()
-const coursesService = useCoursesService()
+const coursesService = useWithAuthentication(useCoursesService())
 
 // --- State -------------------------------------------------------------------
 const { state: courses } = useAsyncState(fetchData, [])
@@ -47,7 +48,7 @@ async function fetchData(): Promise<Course[]> {
 
 
 <style scoped>
-.CoursesTable { 
+.CoursesTable {
   margin-top: 2em;
 }
 </style>

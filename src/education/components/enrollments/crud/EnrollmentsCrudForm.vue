@@ -39,12 +39,12 @@ import { watchDebounced } from '@vueuse/core'
 import { CrudForm, CrudFormCombobox, CrudFormComboboxListItem } from '@classroom/shared/components'
 
 // --- Models ------------------------------------------------------------------
-export type EnrollmentStatus = 'new' | 'approved' | 'declined' | 'graduated'
+export type EnrollmentStatus = 'pending' | 'approved' | 'declined' | 'graduated'
 export type Enrollment = {
   applicant: { id: string, name: string, avatarUrl: string }
   course:  { id: string, title: string }
   group:  { id: string, name: string }
-  status: EnrollmentStatus 
+  status: EnrollmentStatus
 }
 
 //--- Interface ---------------------------------------------------------------
@@ -59,7 +59,7 @@ const props = defineProps<{
 }>()
 
 const model = defineModel<Enrollment>({ required: true })
- 
+
 const emit = defineEmits<{
   save: [void]
 }>()

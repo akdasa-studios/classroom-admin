@@ -10,7 +10,7 @@ import { useTheme } from '@classroom/shared/composables'
 
 // --- Interface ---------------------------------------------------------------
 defineProps<{
-  variant: 'new' | 'approved' | 'declined' | 'graduated'
+  variant: 'pending' | 'approved' | 'declined' | 'graduated'
 }>()
 
 
@@ -30,7 +30,7 @@ const { primary, success, danger } = useTheme()
   border: 1px solid;
   border-radius: 0.375rem;
 
-  &.new {
+  &.pending {
     --color-text:   v-bind(primary.lighten(.2).hsl);
     --color-self:   v-bind(primary.lighten(.9).hsl);
     --color-border: v-bind(primary.lighten(.7).hsl);

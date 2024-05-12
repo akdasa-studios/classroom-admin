@@ -9,7 +9,7 @@ enrollments-accept  = Accept
 enrollments-decline = Decline
 
 enrollments-status  = Status
-enrollments-status-new       = New
+enrollments-status-pending       = New
 enrollments-status-approved  = Approved
 enrollments-status-declined  = Declined
 enrollments-status-graduated = Graduated

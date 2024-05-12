@@ -25,6 +25,7 @@ import { useAppRouter  } from '@classroom/shared/composables'
 import { pick } from '@classroom/shared/utils'
 import { useRolesService, useUsersService } from '@classroom/org/composables'
 import { UserCrudForm, EmptyUser, type User, type Role } from '@classroom/org/components/Users/UsersCrudForm'
+import { useWithAuthentication } from '@classroom/auth/composables'
 
 // --- Interface ---------------------------------------------------------------
 const props = defineProps<{
@@ -34,8 +35,8 @@ const props = defineProps<{
 // --- Dependencies ------------------------------------------------------------
 const fluent = useFluent()
 const router = useAppRouter()
-const usersService = useUsersService()
-const rolesService = useRolesService()
+const usersService = useWithAuthentication(useUsersService())
+const rolesService = useWithAuthentication(useRolesService())
 
 // --- State -------------------------------------------------------------------
 const { state: user } = useAsyncState(
@@ -48,7 +49,7 @@ const { state: roles } = useAsyncState(fetchRoles, [])
 async function onSave() {
   // TODO: Make fields picker code shorter.
   //       User predifined list of keys
-  await (!props.userId 
+  await (!props.userId
     ? usersService.create(pick(user.value, 'name', 'email', 'title', 'department', 'avatarUrl', 'roleIds'))
     : usersService.update(props.userId, user.value))
   router.replace('org-users')

@@ -10,9 +10,9 @@ enrollments-accept  = Зачислить
 enrollments-decline   = Отклонить
 
 enrollments-status           = Статус
-enrollments-status-new       = Новая
+enrollments-status-pending   = Новая
 enrollments-status-approved  = Подтверждена
 enrollments-status-declined  = Отклонена
 enrollments-status-graduated = Закончил
 
-breadcrumbs-education-enrollments = Заявки 
+breadcrumbs-education-enrollments = Заявки

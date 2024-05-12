@@ -6,7 +6,7 @@
     @create-button-click="router.go('org-roles-edit', { id: 'new' })"
   />
 
-  <RolesTable 
+  <RolesTable
     :items="state"
     :text-role-column-header="$ta('org-roles-table').name"
     :text-description-column-header="$ta('org-roles-table').description"
@@ -22,10 +22,11 @@ import { CrudTableHeader } from '@classroom/shared/components'
 import { useAppRouter } from '@classroom/shared/composables'
 import { useRolesService } from '@classroom/org/composables'
 import { type Role, RolesTable } from '@classroom/org/components/Roles'
+import { useWithAuthentication } from '@classroom/auth/composables'
 
 // --- Dependencies ------------------------------------------------------------
 const router = useAppRouter()
-const rolesService = useRolesService()
+const rolesService = useWithAuthentication(useRolesService())
 
 // --- State -------------------------------------------------------------------
 const { state } = useAsyncState<Role[]>(fetchData, [])
@@ -44,7 +45,7 @@ async function fetchData(): Promise<Role[]> {
 
 
 <style scoped>
-.RolesTable { 
+.RolesTable {
   margin-top: 2em;
 }
 </style>

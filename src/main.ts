@@ -7,6 +7,7 @@ import router from './router'
 
 /** Theme */
 import { useThemeManager } from './shared/composables'
+import { runConfigPersistence } from './shared/tasks/runConfigPersistence'
 const themeManager = useThemeManager()
 
 const hue = 243
@@ -19,6 +20,7 @@ themeManager.registerColor('danger',  351, 81,  59)
 
 themeManager.registerColor('text',    hue, sat,  50)
 
+runConfigPersistence()
 
 const app = createApp(App)
 app.use(router)

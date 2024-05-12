@@ -17,7 +17,7 @@
 
 
 <script setup lang="ts">
-import { CrudFormActionButtons, CrudFormActionButtonsText } from '@classroom/shared/components'
+import { CrudFormActionButtons, type CrudFormActionButtonsText } from '@classroom/shared/components'
 
 /* -------------------------------------------------------------------------- */
 /*                                  Interface                                 */

@@ -5,10 +5,10 @@
     :groups-fetcher="fetchGroups"
     :courses-fetcher="fetchCourses"
     :i18n="i18n"
-    save-button-text="Accept"  
-    delete-button-text="Decline"  
+    save-button-text="Accept"
+    delete-button-text="Decline"
     @save="onSave"
-    
+
   />
 </template>
 
@@ -19,13 +19,14 @@ import { useAsyncState } from '@vueuse/core'
 import { useAppRouter  } from '@classroom/shared/composables'
 import { useEnrollmentsService, useCoursesService, useGroupsService } from '@classroom/education/composables'
 import { EnrollmentsCrudForm, type Enrollment } from '@classroom/education/components/enrollments/crud'
+import { useWithAuthentication } from '@classroom/auth/composables'
 
 // --- Models ------------------------------------------------------------------
 const EmptyEnrollment: Enrollment = {
-  applicant: {id:"",name:"", avatarUrl:""}, 
-  group:{id:"",name:""}, 
-  course:{id:"",title:""}, 
-  status: "new"
+  applicant: {id:"",name:"", avatarUrl:""},
+  group:{id:"",name:""},
+  course:{id:"",title:""},
+  status: "pending"
 }
 
 // --- Interface ---------------------------------------------------------------
@@ -36,9 +37,9 @@ const props = defineProps<{
 // --- Dependencies ------------------------------------------------------------
 const fluent = useFluent()
 const router = useAppRouter()
-const enrollmentsService = useEnrollmentsService()
-const groupsService = useGroupsService()
-const coursesService = useCoursesService()
+const enrollmentsService = useWithAuthentication(useEnrollmentsService())
+const groupsService = useWithAuthentication(useGroupsService())
+const coursesService = useWithAuthentication(useCoursesService())
 
 // --- State -------------------------------------------------------------------
 const { state: enrollment, isReady: isEnrollmentLoaded } = useAsyncState(
@@ -60,11 +61,11 @@ async function onSave() {
 // --- Helpers -----------------------------------------------------------------
 async function fetchEnrollment(enrollmentId: string): Promise<Enrollment> {
   const enrollmentsResponse = await enrollmentsService.getOne(enrollmentId)
-  return { 
+  return {
     ...enrollmentsResponse,
-    applicant: { 
-      id: enrollmentsResponse.applicant.id, 
-      name: enrollmentsResponse.applicant.name, 
+    applicant: {
+      id: enrollmentsResponse.applicant.id,
+      name: enrollmentsResponse.applicant.name,
       avatarUrl: enrollmentsResponse.applicant.avatarUrl || `https://i.pravatar.cc/${Math.floor(100 + Math.random() * 100)}`
     },
     group: enrollmentsResponse.group ?? { id: "", name: "" }
@@ -73,7 +74,7 @@ async function fetchEnrollment(enrollmentId: string): Promise<Enrollment> {
 
 async function fetchGroups(query: string): Promise<Array<{ id: string, label: string }>> {
   return (await groupsService.findByNameAndCourse(
-    query, enrollment.value.course.id 
+    query, enrollment.value.course.id
   )).items.map(x => ({ id: x.id, label: x.name }))
 }
 

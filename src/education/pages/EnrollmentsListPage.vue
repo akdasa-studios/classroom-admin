@@ -4,7 +4,7 @@
     :description="$t('enrollments-crud-description')"
   />
 
-  <EnrollmentsTable 
+  <EnrollmentsTable
     :enrollments="enrollments"
     :column-names="{
       student: $t('enrollments-student'),
@@ -22,9 +22,10 @@ import { useAppRouter  } from '@classroom/shared/composables'
 import { CrudTableHeader } from '@classroom/shared/components'
 import { useEnrollmentsService } from '@classroom/education/composables'
 import { EnrollmentsTable, type Enrollment } from '@classroom/education/components/enrollments/list'
+import { useWithAuthentication } from '@classroom/auth/composables'
 
 // --- Dependencies ------------------------------------------------------------
-const enrollmentsService = useEnrollmentsService()
+const enrollmentsService = useWithAuthentication(useEnrollmentsService())
 const router = useAppRouter()
 const fluent = useFluent()
 

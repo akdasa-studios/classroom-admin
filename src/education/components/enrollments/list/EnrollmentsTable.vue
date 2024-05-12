@@ -58,8 +58,8 @@ export type Enrollment = {
   applicant: { id: string, name: string, avatarUrl: string, }
   group: { id: string, name: string }
   course: { id: string, title: string }
-  status: { 
-    type: 'new' | 'approved' | 'declined' | 'graduated'
+  status: {
+    type: 'pending' | 'approved' | 'declined' | 'graduated'
     text: string
   }
 }

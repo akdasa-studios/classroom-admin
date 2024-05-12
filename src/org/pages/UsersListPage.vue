@@ -6,7 +6,7 @@
     @create-button-click="onCreateButtonClicked"
   />
 
-  <UsersTable 
+  <UsersTable
     :users="users"
     :column-names="{
       name:   $ta('org-users-table').name,
@@ -26,10 +26,11 @@ import { useAppRouter  } from '@classroom/shared/composables'
 import { CrudTableHeader } from '@classroom/shared/components'
 import { useRolesService, useUsersService } from '@classroom/org/composables'
 import { UsersTable, type User } from '@classroom/org/components/Users/UsersTable'
+import { useWithAuthentication } from '@classroom/auth/composables'
 
 // --- Dependencies ------------------------------------------------------------
-const usersService = useUsersService()
-const rolesService = useRolesService()
+const usersService = useWithAuthentication(useUsersService())
+const rolesService = useWithAuthentication(useRolesService())
 const router = useAppRouter()
 const fluent = useFluent()
 
@@ -62,7 +63,7 @@ async function fetchUsers(): Promise<User[]> {
     },
     avatarUrl:  user.avatarUrl || "https://a0.anyrgb.com/pngimg/1236/14/no-facial-features-no-avatar-no-eyes-expressionless-avatar-icon-delayering-avatar-user-avatar-men-head-portrait-thumbnail.png",
     roles:      user.roleIds.map(
-                  roleId => 
+                  roleId =>
                     rolesResponse.items.find(
                       role => role.id === roleId
                     )?.name || ""

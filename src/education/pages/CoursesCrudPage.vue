@@ -14,6 +14,7 @@ import { useAppRouter  } from '@classroom/shared/composables'
 import { pick } from '@classroom/shared/utils'
 import { useCoursesService } from '@classroom/education/composables'
 import { CoursesCrudForm, EmptyCourse, type Course } from '@classroom/education/components/courses'
+import { useWithAuthentication } from '@classroom/auth/composables'
 
 // --- Interface ---------------------------------------------------------------
 const props = defineProps<{
@@ -23,7 +24,7 @@ const props = defineProps<{
 // --- Dependencies ------------------------------------------------------------
 const fluent = useFluent()
 const router = useAppRouter()
-const coursesService = useCoursesService()
+const coursesService = useWithAuthentication(useCoursesService())
 
 // --- State -------------------------------------------------------------------
 const { state: course } = useAsyncState(
@@ -34,7 +35,7 @@ const { state: course } = useAsyncState(
 // --- Handlers ----------------------------------------------------------------
 async function onSave() {
   const payload = pick(course.value, 'title', 'subtitle', 'description', 'coverImageUrl')
-  await (!props.courseId 
+  await (!props.courseId
     ? coursesService.create(payload)
     : coursesService.update(props.courseId, payload))
   router.replace('education-courses')

@@ -19,6 +19,7 @@ import { PermissionGroups, Permissions } from '@classroom/shared/models'
 import { pick } from '@classroom/shared/utils'
 import { useRolesService } from '@classroom/org/composables'
 import { RoleCrudForm, EmptyRole, type Role } from '@classroom/org/components/Roles'
+import { useWithAuthentication } from '@classroom/auth/composables'
 
 // --- Interface ---------------------------------------------------------------
 const props = defineProps<{
@@ -28,7 +29,7 @@ const props = defineProps<{
 // --- Dependencies ------------------------------------------------------------
 const fluent = useFluent()
 const router = useAppRouter()
-const rolesService = useRolesService()
+const rolesService = useWithAuthentication(useRolesService())
 
 // --- State -------------------------------------------------------------------
 const { state } = useAsyncState(
@@ -39,9 +40,9 @@ const { state } = useAsyncState(
 // --- Handlers ----------------------------------------------------------------
 async function onSave() {
   const payload = pick(state.value, 'name', 'description', 'permissions')
-  await (!props.roleId 
-    ? rolesService.create(payload)
-    : rolesService.update(props.roleId, payload))
+  await (props.roleId
+    ? rolesService.update(props.roleId, payload)
+    : rolesService.create(payload))
   router.replace('org-roles')
 }
 

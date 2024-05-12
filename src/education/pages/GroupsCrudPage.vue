@@ -17,6 +17,7 @@ import { useAppRouter  } from '@classroom/shared/composables'
 import { useUsersService } from '@classroom/org/composables'
 import { useGroupsService, useCoursesService } from '@classroom/education/composables'
 import { GroupsCrudForm, type Group } from '@classroom/education/components/groups'
+import { useWithAuthentication } from '@classroom/auth/composables'
 
 // --- Models ------------------------------------------------------------------
 const EmptyGroup: Group = {
@@ -32,9 +33,9 @@ const props = defineProps<{
 // --- Dependencies ------------------------------------------------------------
 const fluent = useFluent()
 const router = useAppRouter()
-const groupsService = useGroupsService()
-const usersService = useUsersService()
-const coursesService = useCoursesService()
+const groupsService = useWithAuthentication(useGroupsService())
+const usersService = useWithAuthentication(useUsersService())
+const coursesService = useWithAuthentication(useCoursesService())
 
 // --- State -------------------------------------------------------------------
 const { state: group, isReady: isGroupLoaded } = useAsyncState(
@@ -51,7 +52,7 @@ async function onSave() {
     courseId: group.value.course.id,
     startsAt: group.value.startsAt.toISOString(),
   }
-  await (!props.groupId 
+  await (!props.groupId
     ? groupsService.create(payload)
     : groupsService.update(props.groupId, payload))
   router.replace('education-groups')
@@ -62,7 +63,7 @@ async function fetchData(groupId: string): Promise<Group> {
   const groupsResponse = await groupsService.getOne(groupId)
   const leaderResponse = await usersService.getOne(groupsResponse.leaderId)
   const courseResponse = await coursesService.getOne(groupsResponse.courseId)
-  return { 
+  return {
     ...groupsResponse,
     leader: { id: leaderResponse.id, name: leaderResponse.name },
     course: { id: courseResponse.id, title: courseResponse.title },
