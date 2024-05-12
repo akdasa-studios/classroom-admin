@@ -8,8 +8,9 @@ export async function runConfigPersistence() {
   // Bind config to storage
   bind(config.accessToken,   'auth.token.access', '')
   bind(config.refreshToken,  'auth.token.refresh', '')
-  bind(config.userId, 'auth.user.id', '')
-  bind(config.email,  'auth.user.email', '')
+  bind(config.userId,  'auth.user.id', '')
+  bind(config.email,   'auth.user.email', '')
+  bind(config.baseUrl, 'api.baseUrl', '')
 
   // --- Helpers ----------------------------------------
   function bind<T>(config: Ref<string>, key: string, defaultValue: string) {
