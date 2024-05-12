@@ -31,64 +31,22 @@ export abstract class Service {
     queryParams: { [key: string]: string } | undefined = undefined
   ): Promise<TResponse> {
     return await this.fetch({ method: 'GET', url, queryParams })
-    // const finalUrl = queryParams
-    //   ? url + "?" + new URLSearchParams(queryParams)
-    //   : url
-
-    // const response = await fetch(finalUrl, {
-    //   headers: { 'accept': 'application/json' }
-    // })
-    // if (response.ok) {
-    //   return await response.json() as TResponse
-    // } else {
-    //   throw Error('Failed to fetch data')
-    // }
   }
 
   protected async post<TRequest, TResponse>(
     url: string, payload: TRequest
   ): Promise<TResponse> {
     return await this.fetch({ method: 'POST', url, payload })
-    // const response = await fetch(url, {
-    //   method: 'POST',
-    //   headers: {
-    //     'accept': 'application/json',
-    //     'content-type': 'application/json'
-    //   },
-    //   body: JSON.stringify(payload)
-    // })
-    // if (response.ok) {
-    //   return await response.json() as TResponse
-    // } else {
-    //   throw Error('Failed to fetch data')
-    // }
   }
 
   protected async patch<TRequest, TResponse>(
     url: string, payload: TRequest
   ): Promise<TResponse> {
     return await this.fetch({ method: 'PATCH', url, payload })
-    // const response = await fetch(url, {
-    //   method: 'PATCH',
-    //   headers: {
-    //     'accept': 'application/json',
-    //     'content-type': 'application/json'
-    //   },
-    //   body: JSON.stringify(payload)
-    // })
-    // if (response.ok) {
-    //   return await response.json() as TResponse
-    // } else {
-    //   throw Error('Failed to fetch data')
-    // }
   }
 
   protected async fetch<TRequest, TResponse>(
     options: QueryOptions<TRequest>
-    // method: 'GET' | 'POST' | 'PATCH' | 'DELETE',
-    // url: string,
-    // params: { [key: string]: string } | undefined = undefined,
-    // payload: TRequest | undefined = undefined
   ) {
     let trials = 3
     let shouldRetry = true
@@ -100,7 +58,6 @@ export abstract class Service {
           .filter(i => i.onRequest)
           .map(i => i.onRequest!()
         )
-        // console.log(this.interceptions)
         const extraHeaders = result.reduce((acc, curr) => ({ ...acc, ...curr.headers }), {})
 
         const finalUrl = options.queryParams

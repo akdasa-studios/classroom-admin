@@ -3,22 +3,22 @@ import { Service } from '@classroom/shared/services'
 
 export class GroupsService extends Service {
   async create(course: CreateGroupRequest) {
-    return await this.post("http://localhost:3000/groups", course)
+    return await this.post("/groups", course)
   }
 
   async getOne(id: string): Promise<GetGroupResponse> {
-    return await this.get(`http://localhost:3000/groups/${id}`)
+    return await this.get(`/groups/${id}`)
   }
 
   async getAll(): Promise<GetGroupsResponse> {
-    return await this.get("http://localhost:3000/groups")
+    return await this.get("/groups")
   }
 
   async update(id: string, request: UpdateGroupRequest): Promise<UpdateGroupResponse> {
-    return await this.patch(`http://localhost:3000/groups/${id}`, request)
+    return await this.patch(`/groups/${id}`, request)
   }
 
   async findByNameAndCourse(query: string, courseId: string): Promise<GetGroupsResponse> {
-    return await this.get("http://localhost:3000/groups", { query, courseId })
+    return await this.get("/groups", { query, courseId })
   }
 }

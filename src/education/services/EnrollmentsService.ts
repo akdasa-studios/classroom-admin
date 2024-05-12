@@ -3,22 +3,22 @@ import { Service } from '@classroom/shared/services'
 
 export class EnrollmentsService extends Service {
   async create(enrollment: CreateEnrollmentRequest) {
-    return await this.post("http://localhost:3000/enrollments", enrollment)
+    return await this.post("/enrollments", enrollment)
   }
 
   async getOne(id: string): Promise<GetEnrollmentResponse> {
-    return await this.get(`http://localhost:3000/enrollments/${id}`)
+    return await this.get(`/enrollments/${id}`)
   }
 
   async getAll(): Promise<GetEnrollmentsResponse> {
-    return await this.get("http://localhost:3000/enrollments")
+    return await this.get("/enrollments")
   }
 
   async update(id: string, request: UpdateEnrollmentRequest): Promise<UpdateEnrollmentResponse> {
-    return await this.patch(`http://localhost:3000/enrollments/${id}`, request)
+    return await this.patch(`/enrollments/${id}`, request)
   }
 
   async find(query: string): Promise<GetEnrollmentsResponse> {
-    return await this.get("http://localhost:3000/enrollments", { query })
+    return await this.get("/enrollments", { query })
   }
 }

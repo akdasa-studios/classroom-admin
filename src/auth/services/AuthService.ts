@@ -11,7 +11,7 @@ export class AuthService extends Service {
    * @returns A promise that resolves to the authentication response.
    */
   async signIn(request: AuthRequest): Promise<AuthResponse> {
-    return await this.post("http://localhost:3000/auth/email", request)
+    return await this.post("/auth/email", request)
   }
 
   /**
@@ -22,6 +22,6 @@ export class AuthService extends Service {
   async refreshToken(
     request: RefreshTokenRequest
   ): Promise<RefreshTokenResponse> {
-    return await this.post("http://localhost:3000/auth/refresh", request)
+    return await this.post("/auth/refresh", request)
   }
 }
