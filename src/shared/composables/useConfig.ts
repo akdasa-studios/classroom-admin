@@ -6,9 +6,7 @@ export const useConfig = createGlobalState(() => {
   const accessToken = ref('')
   const refreshToken = ref('')
   const email = ref('')
-  const baseUrl = ref(import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000')
-
-  console.log('Config initialized', { userId, accessToken, refreshToken, email, baseUrl })
+  const baseUrl = ref(import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001')
 
   return { userId, accessToken, refreshToken, email, baseUrl }
 })

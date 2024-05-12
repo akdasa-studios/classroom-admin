@@ -14,7 +14,8 @@ export async function runConfigPersistence() {
 
   // --- Helpers ----------------------------------------
   function bind<T>(config: Ref<string>, key: string, defaultValue: string) {
-    config.value = localStorage.getItem(key) || defaultValue
+    const storedValue = localStorage.getItem(key)
+    if (storedValue) { config.value = storedValue || defaultValue }
     watch(config, (value) => { localStorage.setItem(key, value) })
     console.log(`Bound ${key} to storage: ${config.value}`)
   }
