@@ -3,22 +3,22 @@ import { Service } from '@classroom/shared/services'
 
 export class UsersService extends Service {
   async create(user: CreateUserRequest) {
-    return await this.post("http://localhost:3000/users", user)
+    return await this.post("/users", user)
   }
 
   async getOne(id: string): Promise<GetUserResponse> {
-    return await this.get(`http://localhost:3000/users/${id}`)
+    return await this.get(`/users/${id}`)
   }
 
   async getAll(): Promise<GetUsersResponse> {
-    return await this.get("http://localhost:3000/users")
+    return await this.get("/users")
   }
 
   async update(id: string, request: UpdateUserRequest): Promise<UpdateUserResponse> {
-    return await this.patch(`http://localhost:3000/users/${id}`, request)
+    return await this.patch(`/users/${id}`, request)
   }
 
   async find(query: string): Promise<GetUsersResponse> {
-    return await this.get("http://localhost:3000/users", { query })
+    return await this.get("/users", { query })
   }
 }
